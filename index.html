@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>LiterQuiz - Literatura Castellana</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#0d1117;--card:#161b22;--primary:#58a6ff;--accent:#f0883e;
+--green:#3fb950;--red:#f85149;--yellow:#d29922;--purple:#bc8cff;
+--text:#e6edf3;--muted:#8b949e;--radius:16px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.container{max-width:500px;margin:0 auto;padding:12px}
+
+/* SPLASH */
+.splash{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:20px}
+.splash h1{font-size:3em;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--purple),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;animation:pulse 2s infinite}
+.splash .sub{color:var(--muted);font-size:1.1em;margin-bottom:30px}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+
+/* BUTTONS */
+.btn{display:block;width:100%;padding:16px;border:none;border-radius:var(--radius);font-size:1.1em;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;margin-bottom:12px;position:relative;overflow:hidden}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:var(--primary);color:#000}
+.btn-accent{background:var(--accent);color:#000}
+.btn-outline{background:transparent;border:2px solid var(--muted);color:var(--text)}
+.btn-outline:hover{border-color:var(--primary)}
+
+/* MENU */
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.menu-card{background:var(--card);border-radius:var(--radius);padding:20px 14px;text-align:center;cursor:pointer;transition:all .2s;border:2px solid transparent;position:relative;overflow:hidden}
+.menu-card:active{transform:scale(.95)}
+.menu-card:hover{border-color:var(--primary)}
+.menu-card .emoji{font-size:2.2em;margin-bottom:8px;display:block}
+.menu-card .title{font-weight:700;font-size:.95em}
+.menu-card .desc{color:var(--muted);font-size:.75em;margin-top:4px}
+.menu-card.locked{opacity:.4;pointer-events:none}
+
+/* HEADER BAR */
+.header{display:flex;align-items:center;justify-content:space-between;padding:12px 0;margin-bottom:12px}
+.header .back{background:none;border:none;color:var(--text);font-size:1.5em;cursor:pointer;padding:4px 8px}
+.header .title{font-weight:700;font-size:1.1em}
+.header .score-badge{background:var(--accent);color:#000;padding:4px 12px;border-radius:20px;font-weight:700;font-size:.9em}
+
+/* STUDY CARD */
+.study-card{background:var(--card);border-radius:var(--radius);padding:24px;margin-bottom:16px;border-left:4px solid var(--primary)}
+.study-card h3{color:var(--primary);margin-bottom:8px;font-size:1.1em}
+.study-card p{color:var(--muted);line-height:1.6;font-size:.95em}
+.study-card .tag{display:inline-block;background:var(--primary);color:#000;padding:2px 10px;border-radius:12px;font-size:.75em;font-weight:700;margin-right:6px;margin-bottom:4px}
+.study-card .author-img{width:100%;max-width:200px;height:auto;border-radius:12px;margin:12px auto;display:block;object-fit:cover}
+.study-card ul{color:var(--muted);padding-left:20px;line-height:1.8}
+.study-card .dates{color:var(--yellow);font-weight:600;font-size:.85em}
+
+/* QUIZ */
+.quiz-top{text-align:center;margin-bottom:20px}
+.quiz-top .q-num{color:var(--muted);font-size:.9em}
+.quiz-top .q-text{font-size:1.15em;font-weight:700;margin-top:8px;line-height:1.4}
+.timer-bar{height:6px;background:var(--card);border-radius:3px;overflow:hidden;margin:12px 0}
+.timer-bar .fill{height:100%;background:linear-gradient(90deg,var(--green),var(--yellow),var(--red));transition:width .3s linear;border-radius:3px}
+.options{display:grid;grid-template-columns:1fr;gap:10px}
+.option{padding:16px;border-radius:var(--radius);font-size:1em;font-weight:600;cursor:pointer;transition:all .15s;text-align:left;border:2px solid var(--muted);background:var(--card);color:var(--text)}
+.option:active{transform:scale(.97)}
+.option.correct{border-color:var(--green);background:#1a3a2a;color:var(--green);animation:pop .3s}
+.option.wrong{border-color:var(--red);background:#3a1a1a;color:var(--red);animation:shake .3s}
+.option.disabled{pointer-events:none;opacity:.6}
+.option .letter{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;border-radius:8px;margin-right:10px;font-weight:900;font-size:.85em}
+.opt-a .letter{background:#e74c3c20;color:#e74c3c}
+.opt-b .letter{background:#3498db20;color:#3498db}
+.opt-c .letter{background:#f39c1220;color:#f39c12}
+.opt-d .letter{background:#2ecc7120;color:#2ecc71}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* RESULTS */
+.results{text-align:center;padding:30px 0}
+.results .big-score{font-size:4em;font-weight:900;background:linear-gradient(135deg,var(--green),var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.results .label{color:var(--muted);font-size:1.1em;margin:8px 0 20px}
+.stars{font-size:2.5em;margin:12px 0}
+.stat-row{display:flex;justify-content:space-around;margin:20px 0;padding:16px;background:var(--card);border-radius:var(--radius)}
+.stat{text-align:center}
+.stat .num{font-size:1.5em;font-weight:900}
+.stat .lbl{color:var(--muted);font-size:.8em}
+
+/* INFO BAR */
+.info-bar{background:var(--card);border-radius:var(--radius);padding:12px 16px;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.info-bar .icon{font-size:1.5em}
+.info-bar .text{font-size:.85em;color:var(--muted);line-height:1.4}
+
+/* PROGRESS */
+.progress-ring{width:80px;height:80px;margin:0 auto 16px}
+.section-title{font-size:1.3em;font-weight:900;margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+
+/* TABS */
+.tabs{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px}
+.tab{padding:8px 16px;border-radius:20px;font-size:.85em;font-weight:600;cursor:pointer;white-space:nowrap;border:2px solid var(--muted);background:transparent;color:var(--muted);transition:all .2s}
+.tab.active{background:var(--primary);color:#000;border-color:var(--primary)}
+
+/* AUDIO PLAYER */
+.audio-toggle{position:fixed;top:12px;right:12px;z-index:100;background:var(--card);border:2px solid var(--muted);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2em}
+
+/* HIDDEN */
+.hidden{display:none!important}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-thumb{background:var(--muted);border-radius:2px}
+</style>
+</head>
+<body>
+
+<button class="audio-toggle" id="audioToggle" onclick="toggleMusic()">🔇</button>
+
+<div class="container" id="app"></div>
+
+<script>
+// ============================================
+// DATA - MOVIMIENTOS LITERARIOS
+// ============================================
+const MOVEMENTS = [
+  {
+    id:"medieval",emoji:"⚔️",name:"Edad Media",dates:"s.X - s.XV",
+    color:"#d29922",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Libro_de_buen_amor_f1r.jpg/220px-Libro_de_buen_amor_f1r.jpg",
+    desc:"Literatura marcada por la religion, la tradicion oral y los cantares de gesta.",
+    chars:["Predominio de la tradicion oral y los juglares","Temas religiosos, heroicos y didacticos","Uso del verso como forma principal"],
+    authors:[
+      {name:"Anonimo",work:"Cantar de Mio Cid (s.XII)",note:"Primer gran poema epico castellano"},
+      {name:"Gonzalo de Berceo",work:"Milagros de Nuestra Senora",note:"Primer poeta castellano de nombre conocido"},
+      {name:"Juan Ruiz, Arcipreste de Hita",work:"Libro de Buen Amor",note:"Mezcla lo religioso con lo profano"},
+      {name:"Fernando de Rojas",work:"La Celestina (1499)",note:"Obra de transicion al Renacimiento"},
+      {name:"Don Juan Manuel",work:"El Conde Lucanor",note:"Cuentos con ensenanza moral"}
+    ],
+    questions:[
+      {q:"Cual es el primer gran poema epico en castellano?",opts:["Cantar de Mio Cid","La Celestina","El Quijote","Libro de Buen Amor"],ans:0},
+      {q:"Quien es el primer poeta castellano de nombre conocido?",opts:["Juan Ruiz","Gonzalo de Berceo","Jorge Manrique","Fernando de Rojas"],ans:1},
+      {q:"Que obra escribio el Arcipreste de Hita?",opts:["El Conde Lucanor","Milagros de Nuestra Senora","Libro de Buen Amor","Coplas a la muerte de su padre"],ans:2},
+      {q:"La Celestina fue escrita por...",opts:["Gonzalo de Berceo","Juan Ruiz","Anonimo","Fernando de Rojas"],ans:3},
+      {q:"Que tipo de literatura predominaba en la Edad Media?",opts:["Novela realista","Tradicion oral y juglares","Teatro experimental","Poesia vanguardista"],ans:1},
+      {q:"El Conde Lucanor es una coleccion de...",opts:["Poemas epicos","Canciones trovadorescas","Cuentos con moraleja","Obras de teatro"],ans:2}
+    ]
+  },
+  {
+    id:"renacimiento",emoji:"🎨",name:"Renacimiento",dates:"s.XV - s.XVI",
+    color:"#3fb950",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Garcilaso_de_la_Vega_%28poeta%29.jpg/220px-Garcilaso_de_la_Vega_%28poeta%29.jpg",
+    desc:"Vuelta a los clasicos grecolatinos. El ser humano como centro del universo (antropocentrismo).",
+    chars:["Antropocentrismo frente al teocentrismo medieval","Imitacion de los clasicos grecolatinos","Temas: amor, naturaleza (locus amoenus), mitologia"],
+    authors:[
+      {name:"Garcilaso de la Vega",work:"Eglogas, Sonetos",note:"Introdujo el soneto italiano en Espana"},
+      {name:"Fray Luis de Leon",work:"Oda a la vida retirada",note:"Poeta mistico y academico"},
+      {name:"San Juan de la Cruz",work:"Cantico espiritual",note:"Maxima expresion de la mistica"},
+      {name:"Santa Teresa de Jesus",work:"Las Moradas",note:"Prosa mistica autobiografica"},
+      {name:"Lazarillo de Tormes",work:"(Anonimo, 1554)",note:"Primera novela picaresca"}
+    ],
+    questions:[
+      {q:"Quien introdujo el soneto italiano en la poesia espanola?",opts:["Fray Luis de Leon","San Juan de la Cruz","Garcilaso de la Vega","Jorge Manrique"],ans:2},
+      {q:"Que corriente filosofica define al Renacimiento?",opts:["Teocentrismo","Antropocentrismo","Existencialismo","Nihilismo"],ans:1},
+      {q:"Cual es la primera novela picaresca?",opts:["El Quijote","La Celestina","Lazarillo de Tormes","Guzman de Alfarache"],ans:2},
+      {q:"San Juan de la Cruz es representante de la...",opts:["Novela pastoril","Poesia mistica","Novela picaresca","Epica renacentista"],ans:1},
+      {q:"Que figura literaria describe un lugar natural idealizado?",opts:["Carpe diem","Locus amoenus","Beatus ille","Ubi sunt"],ans:1},
+      {q:"Fray Luis de Leon escribio...",opts:["Cantico espiritual","Oda a la vida retirada","Las Moradas","Eglogas"],ans:1}
+    ]
+  },
+  {
+    id:"barroco",emoji:"🎭",name:"Barroco",dates:"s.XVII",
+    color:"#bc8cff",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Quevedo_%28copia_de_Vel%C3%A1zquez%29.jpg/220px-Quevedo_%28copia_de_Vel%C3%A1zquez%29.jpg",
+    desc:"Epoca de contrastes, desengano y virtuosismo formal. Siglo de Oro espanol.",
+    chars:["Pesimismo, desengano y vision critica de la realidad","Dos corrientes: Conceptismo (ideas) y Culteranismo (forma)","Teatro: Lope de Vega crea la comedia nueva"],
+    authors:[
+      {name:"Miguel de Cervantes",work:"Don Quijote de la Mancha (1605/1615)",note:"La primera novela moderna"},
+      {name:"Luis de Gongora",work:"Soledades, Fabula de Polifemo",note:"Maximo representante del culteranismo"},
+      {name:"Francisco de Quevedo",work:"El Buscon, Suenos",note:"Maximo representante del conceptismo"},
+      {name:"Lope de Vega",work:"Fuenteovejuna, El caballero de Olmedo",note:"Creo la comedia nueva espanola"},
+      {name:"Calderon de la Barca",work:"La vida es sueno",note:"Cumbre del teatro barroco"}
+    ],
+    questions:[
+      {q:"Quien escribio Don Quijote de la Mancha?",opts:["Lope de Vega","Quevedo","Cervantes","Calderon"],ans:2},
+      {q:"El culteranismo tiene como maximo representante a...",opts:["Quevedo","Gongora","Cervantes","Lope de Vega"],ans:1},
+      {q:"Que dramaturgo creo la 'comedia nueva'?",opts:["Calderon de la Barca","Tirso de Molina","Lope de Vega","Cervantes"],ans:2},
+      {q:"'La vida es sueno' fue escrita por...",opts:["Lope de Vega","Gongora","Quevedo","Calderon de la Barca"],ans:3},
+      {q:"El Conceptismo se centra en...",opts:["La forma y ornamentacion","Las ideas y juegos de palabras","La naturaleza idealizada","Los sentimientos amorosos"],ans:1},
+      {q:"Cual de estas NO es una obra de Quevedo?",opts:["El Buscon","Suenos","Fuenteovejuna","Poesia satirica"],ans:2}
+    ]
+  },
+  {
+    id:"romanticismo",emoji:"🌹",name:"Romanticismo",dates:"1800 - 1850",
+    color:"#f85149",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Gustavo_Adolfo_B%C3%A9cquer.jpg/220px-Gustavo_Adolfo_B%C3%A9cquer.jpg",
+    desc:"Exaltacion del yo, la libertad, los sentimientos y la rebeldia contra las normas.",
+    chars:["Subjetivismo: el yo y los sentimientos por encima de la razon","Libertad creadora, rechazo de reglas clasicas","Temas: amor imposible, muerte, misterio, naturaleza salvaje"],
+    authors:[
+      {name:"Gustavo Adolfo Becquer",work:"Rimas y Leyendas",note:"Romanticismo tardio, poesia intimista"},
+      {name:"Jose de Espronceda",work:"El estudiante de Salamanca, Cancion del pirata",note:"Prototipo del poeta romantico rebelde"},
+      {name:"Duque de Rivas",work:"Don Alvaro o la fuerza del sino",note:"Drama romantico por excelencia"},
+      {name:"Jose Zorrilla",work:"Don Juan Tenorio",note:"El mito de Don Juan mas famoso"},
+      {name:"Rosalia de Castro",work:"En las orillas del Sar",note:"Romanticismo gallego y melancolia"}
+    ],
+    questions:[
+      {q:"Quien escribio 'Rimas y Leyendas'?",opts:["Espronceda","Zorrilla","Becquer","Rosalia de Castro"],ans:2},
+      {q:"'Cancion del pirata' es de...",opts:["Becquer","Espronceda","Duque de Rivas","Zorrilla"],ans:1},
+      {q:"Que caracteriza al Romanticismo?",opts:["Razon sobre emocion","Imitacion clasica","Exaltacion de sentimientos y libertad","Descripcion objetiva de la realidad"],ans:2},
+      {q:"Quien escribio 'Don Juan Tenorio'?",opts:["Espronceda","Becquer","Duque de Rivas","Jose Zorrilla"],ans:3},
+      {q:"Rosalia de Castro es asociada con...",opts:["Teatro romantico","Romanticismo gallego","Novela gotica","Poesia epica"],ans:1},
+      {q:"'Don Alvaro o la fuerza del sino' es un...",opts:["Poema lirico","Cuento de terror","Drama romantico","Ensayo filosofico"],ans:2}
+    ]
+  },
+  {
+    id:"realismo",emoji:"🏭",name:"Realismo y Naturalismo",dates:"1850 - 1900",
+    color:"#58a6ff",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Benito_P%C3%A9rez_Gald%C3%B3s_%28765908928%29.jpg/220px-Benito_P%C3%A9rez_Gald%C3%B3s_%28765908928%29.jpg",
+    desc:"Descripcion objetiva de la realidad social. El Naturalismo anade el determinismo cientifico.",
+    chars:["Descripcion minuciosa y objetiva de la realidad","Novela como genero dominante","Naturalismo: influencia del medio y la herencia biologica"],
+    authors:[
+      {name:"Benito Perez Galdos",work:"Fortunata y Jacinta, Episodios Nacionales",note:"El gran novelista del Realismo espanol"},
+      {name:"Leopoldo Alas 'Clarin'",work:"La Regenta",note:"Obra cumbre del Realismo"},
+      {name:"Emilia Pardo Bazan",work:"Los pazos de Ulloa",note:"Introdujo el Naturalismo en Espana"},
+      {name:"Juan Valera",work:"Pepita Jimenez",note:"Realismo idealista andaluz"},
+      {name:"Vicente Blasco Ibanez",work:"La barraca, Canas y barro",note:"Naturalismo valenciano"}
+    ],
+    questions:[
+      {q:"Quien escribio 'La Regenta'?",opts:["Galdos","Clarin","Pardo Bazan","Valera"],ans:1},
+      {q:"Que genero domina en el Realismo?",opts:["Poesia lirica","Teatro","La novela","El ensayo"],ans:2},
+      {q:"Quien introdujo el Naturalismo en Espana?",opts:["Galdos","Clarin","Blasco Ibanez","Emilia Pardo Bazan"],ans:3},
+      {q:"'Fortunata y Jacinta' es obra de...",opts:["Clarin","Perez Galdos","Pardo Bazan","Valera"],ans:1},
+      {q:"El Naturalismo se diferencia del Realismo por...",opts:["Ser mas optimista","Anadir determinismo cientifico","Usar mas poesia","Rechazar la novela"],ans:1},
+      {q:"'Los pazos de Ulloa' esta ambientada en...",opts:["Madrid","Andalucia","Galicia","Valencia"],ans:2}
+    ]
+  },
+  {
+    id:"gen98",emoji:"🇪🇸",name:"Generacion del 98",dates:"1898 - 1920",
+    color:"#f0883e",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Antonio_Machado_en_segovia.jpg/250px-Antonio_Machado_en_segovia.jpg",
+    desc:"Crisis tras la perdida de las colonias en 1898. Reflexion sobre Espana y su identidad.",
+    chars:["Preocupacion por el 'problema de Espana'","Estilo sobrio, personal y reflexivo","Paisaje castellano como simbolo de Espana"],
+    authors:[
+      {name:"Miguel de Unamuno",work:"Niebla, San Manuel Bueno, martir",note:"Filosofo existencialista, la 'nivola'"},
+      {name:"Antonio Machado",work:"Campos de Castilla, Soledades",note:"Poeta del paisaje y del tiempo"},
+      {name:"Pio Baroja",work:"El arbol de la ciencia, Zalacain el aventurero",note:"Novelista pesimista y directo"},
+      {name:"Azorin (Jose Martinez Ruiz)",work:"La voluntad, Castilla",note:"Descripcion minuciosa del paisaje"},
+      {name:"Valle-Inclan",work:"Luces de bohemia",note:"Creo el esperpento"}
+    ],
+    questions:[
+      {q:"Que evento historico marca a la Generacion del 98?",opts:["Guerra Civil","Perdida de las colonias en 1898","Revolucion Industrial","Primera Guerra Mundial"],ans:1},
+      {q:"Quien creo el 'esperpento' como genero?",opts:["Unamuno","Machado","Valle-Inclan","Baroja"],ans:2},
+      {q:"'Campos de Castilla' es obra de...",opts:["Azorin","Unamuno","Baroja","Antonio Machado"],ans:3},
+      {q:"Que genero invento Unamuno?",opts:["El esperpento","La nivola","El soneto","La zarzuela"],ans:1},
+      {q:"El tema central de la Generacion del 98 es...",opts:["El amor romantico","La ciencia","El problema de Espana","La vanguardia artistica"],ans:2},
+      {q:"'El arbol de la ciencia' es de...",opts:["Unamuno","Machado","Pio Baroja","Valle-Inclan"],ans:2}
+    ]
+  },
+  {
+    id:"gen27",emoji:"🌙",name:"Generacion del 27",dates:"1927 - 1936",
+    color:"#d29922",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Federico_Garc%C3%ADa_Lorca.jpg/220px-Federico_Garc%C3%ADa_Lorca.jpg",
+    desc:"Grupo poetico que fusiona tradicion y vanguardia. Edad de plata de la literatura espanola.",
+    chars:["Fusion de tradicion (romancero, Gongora) y vanguardia (surrealismo)","Gran riqueza de imagenes y metaforas","Compromiso social creciente antes de la Guerra Civil"],
+    authors:[
+      {name:"Federico Garcia Lorca",work:"Romancero gitano, Poeta en Nueva York, La casa de Bernarda Alba",note:"El poeta mas universal"},
+      {name:"Rafael Alberti",work:"Marinero en tierra, Sobre los angeles",note:"Poesia neopopular y vanguardista"},
+      {name:"Luis Cernuda",work:"La realidad y el deseo",note:"Conflicto entre deseo y realidad"},
+      {name:"Pedro Salinas",work:"La voz a ti debida",note:"Poeta del amor"},
+      {name:"Vicente Aleixandre",work:"La destruccion o el amor",note:"Premio Nobel 1977, surrealismo"}
+    ],
+    questions:[
+      {q:"Que homenaje a un poeta clasico reune a la Generacion del 27?",opts:["Cervantes","Quevedo","Gongora","Garcilaso"],ans:2},
+      {q:"Quien escribio 'Romancero gitano'?",opts:["Alberti","Cernuda","Lorca","Salinas"],ans:2},
+      {q:"Pedro Salinas es conocido como el poeta de...",opts:["La muerte","El amor","El mar","La noche"],ans:1},
+      {q:"Que miembro del 27 gano el Nobel?",opts:["Lorca","Alberti","Aleixandre","Cernuda"],ans:2},
+      {q:"'La casa de Bernarda Alba' es una obra de...",opts:["Teatro","Poesia","Novela","Ensayo"],ans:0},
+      {q:"La Generacion del 27 combina...",opts:["Solo clasicismo","Solo vanguardia","Tradicion y vanguardia","Realismo y naturalismo"],ans:2}
+    ]
+  },
+  {
+    id:"posguerra",emoji:"📖",name:"Posguerra y s.XX",dates:"1939 - 1975",
+    color:"#3fb950",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Camilo_Jos%C3%A9_Cela_en_los_a%C3%B1os_40.jpg/250px-Camilo_Jos%C3%A9_Cela_en_los_a%C3%B1os_40.jpg",
+    desc:"Literatura bajo la dictadura franquista: existencialismo, novela social y experimentacion.",
+    chars:["Anos 40: existencialismo y tremendismo (Cela)","Anos 50: novela social, denuncia de la realidad","Anos 60-70: experimentacion formal (Tiempo de silencio)"],
+    authors:[
+      {name:"Camilo Jose Cela",work:"La familia de Pascual Duarte, La colmena",note:"Premio Nobel 1989, tremendismo"},
+      {name:"Carmen Laforet",work:"Nada (1945)",note:"Existencialismo femenino, Premio Nadal"},
+      {name:"Miguel Delibes",work:"Los santos inocentes, Cinco horas con Mario",note:"Mundo rural y critica social"},
+      {name:"Rafael Sanchez Ferlosio",work:"El Jarama",note:"Novela social objetivista"},
+      {name:"Luis Martin-Santos",work:"Tiempo de silencio",note:"Inicio de la novela experimental"}
+    ],
+    questions:[
+      {q:"Quien escribio 'La colmena'?",opts:["Delibes","Cela","Laforet","Martin-Santos"],ans:1},
+      {q:"'Nada' (1945) es una novela de...",opts:["Cela","Delibes","Carmen Laforet","Ferlosio"],ans:2},
+      {q:"Que estilo literario inicio Cela con 'Pascual Duarte'?",opts:["Surrealismo","Tremendismo","Neoclasicismo","Costumbrismo"],ans:1},
+      {q:"'Tiempo de silencio' representa el inicio de...",opts:["La novela social","La novela experimental","El realismo magico","La novela pastoril"],ans:1},
+      {q:"Delibes retrata especialmente el mundo...",opts:["Urbano y cosmopolita","Rural castellano","Marinero","Industrial"],ans:1},
+      {q:"Que novela de los 50 es ejemplo de objetivismo social?",opts:["Nada","La colmena","El Jarama","Tiempo de silencio"],ans:2}
+    ]
+  }
+];
+
+// ============================================
+// APP STATE
+// ============================================
+let state = {
+  screen:"splash",
+  movement:null,
+  mode:null, // "study" or "quiz"
+  qIndex:0,
+  score:0,
+  correct:0,
+  wrong:0,
+  streak:0,
+  bestStreak:0,
+  timer:null,
+  timeLeft:15,
+  musicOn:false,
+  totalScore: parseInt(localStorage.getItem('lq_total')||'0'),
+  completed: JSON.parse(localStorage.getItem('lq_done')||'{}')
+};
+
+const app = document.getElementById('app');
+
+// ============================================
+// AUDIO
+// ============================================
+let audioCtx = null;
+function initAudio(){
+  if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+}
+function playTone(freq,dur,type='sine',vol=0.15){
+  try{
+    initAudio();
+    const o=audioCtx.createOscillator();
+    const g=audioCtx.createGain();
+    o.type=type;o.frequency.value=freq;
+    g.gain.value=vol;
+    g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+dur);
+    o.connect(g);g.connect(audioCtx.destination);
+    o.start();o.stop(audioCtx.currentTime+dur);
+  }catch(e){}
+}
+function sfxCorrect(){playTone(523,.1);setTimeout(()=>playTone(659,.1),100);setTimeout(()=>playTone(784,.15),200)}
+function sfxWrong(){playTone(200,.3,'sawtooth',0.1)}
+function sfxClick(){playTone(800,.05,'sine',0.08)}
+function sfxStart(){playTone(440,.1);setTimeout(()=>playTone(554,.1),120);setTimeout(()=>playTone(659,.1),240);setTimeout(()=>playTone(880,.2),360)}
+
+let bgInterval=null;
+function toggleMusic(){
+  state.musicOn=!state.musicOn;
+  document.getElementById('audioToggle').textContent=state.musicOn?'🔊':'🔇';
+  if(state.musicOn){
+    initAudio();
+    startBgMusic();
+  }else{
+    stopBgMusic();
+  }
+}
+function startBgMusic(){
+  if(bgInterval)return;
+  const notes=[262,294,330,349,392,349,330,294];
+  let i=0;
+  bgInterval=setInterval(()=>{
+    if(state.musicOn)playTone(notes[i%notes.length],.3,'sine',0.04);
+    i++;
+  },500);
+}
+function stopBgMusic(){clearInterval(bgInterval);bgInterval=null}
+
+// ============================================
+// RENDER
+// ============================================
+function render(){
+  switch(state.screen){
+    case 'splash': renderSplash(); break;
+    case 'menu': renderMenu(); break;
+    case 'study': renderStudy(); break;
+    case 'quiz': renderQuiz(); break;
+    case 'results': renderResults(); break;
+  }
+}
+
+function renderSplash(){
+  app.innerHTML=`
+    <div class="splash">
+      <div style="font-size:4em;margin-bottom:16px">📚</div>
+      <h1>LiterQuiz</h1>
+      <p class="sub">Literatura Castellana Interactiva</p>
+      <div style="width:100%;max-width:300px">
+        <button class="btn btn-primary" onclick="goMenu()">Empezar</button>
+        <div style="margin-top:16px;color:var(--muted);font-size:.85em">
+          <div>🏆 Puntuacion total: <strong style="color:var(--accent)">${state.totalScore}</strong></div>
+          <div style="margin-top:4px">${Object.keys(state.completed).length}/${MOVEMENTS.length} temas completados</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function goMenu(){sfxClick();state.screen='menu';render()}
+
+function renderMenu(){
+  const cards = MOVEMENTS.map((m,i)=>{
+    const done = state.completed[m.id];
+    return `<div class="menu-card" onclick="selectMovement('${m.id}')" style="border-color:${done?m.color:'transparent'}">
+      ${done?`<div style="position:absolute;top:6px;right:8px;font-size:.7em">✅</div>`:''}
+      <span class="emoji">${m.emoji}</span>
+      <div class="title">${m.name}</div>
+      <div class="desc">${m.dates}</div>
+    </div>`;
+  }).join('');
+
+  app.innerHTML=`
+    <div class="header">
+      <button class="back" onclick="state.screen='splash';render()">←</button>
+      <span class="title">Elige tema</span>
+      <span class="score-badge">🏆 ${state.totalScore}</span>
+    </div>
+    <div class="info-bar">
+      <span class="icon">💡</span>
+      <span class="text">Primero estudia el tema, luego haz el quiz para ganar puntos</span>
+    </div>
+    <div class="menu-grid">${cards}</div>`;
+}
+
+function selectMovement(id){
+  sfxClick();
+  state.movement = MOVEMENTS.find(m=>m.id===id);
+  state.screen='modeSelect';
+  renderModeSelect();
+}
+
+function renderModeSelect(){
+  const m=state.movement;
+  app.innerHTML=`
+    <div class="header">
+      <button class="back" onclick="goMenu()">←</button>
+      <span class="title">${m.emoji} ${m.name}</span>
+      <span class="score-badge">${m.dates}</span>
+    </div>
+    <div class="study-card" style="border-color:${m.color}">
+      <p style="color:var(--text);font-size:1em">${m.desc}</p>
+      <img class="author-img" src="${m.img}" alt="${m.name}" onerror="this.style.display='none'">
+    </div>
+    <button class="btn btn-primary" onclick="startStudy()">📖 Estudiar tema</button>
+    <button class="btn btn-accent" onclick="startQuiz()">🎮 Hacer Quiz (${m.questions.length} preguntas)</button>
+    <button class="btn btn-outline" onclick="goMenu()">← Volver al menu</button>`;
+}
+
+// ============================================
+// STUDY MODE
+// ============================================
+function startStudy(){
+  sfxClick();
+  state.screen='study';
+  render();
+}
+
+function renderStudy(){
+  const m=state.movement;
+  let html=`
+    <div class="header">
+      <button class="back" onclick="selectMovement('${m.id}')">←</button>
+      <span class="title">📖 ${m.name}</span>
+      <span class="score-badge">${m.dates}</span>
+    </div>
+    <div class="study-card" style="border-color:${m.color}">
+      <span class="dates">${m.dates}</span>
+      <h3>${m.name}</h3>
+      <p>${m.desc}</p>
+      <img class="author-img" src="${m.img}" alt="${m.name}" onerror="this.style.display='none'">
+    </div>
+    <div class="study-card" style="border-color:var(--yellow)">
+      <h3>📌 Caracteristicas principales</h3>
+      <ul>${m.chars.map(c=>`<li>${c}</li>`).join('')}</ul>
+    </div>
+    <div class="section-title">${m.emoji} Autores y obras clave</div>`;
+
+  m.authors.forEach(a=>{
+    html+=`<div class="study-card" style="border-color:var(--purple)">
+      <h3>${a.name}</h3>
+      <p><strong style="color:var(--text)">📕 ${a.work}</strong></p>
+      <p style="margin-top:6px">${a.note}</p>
+    </div>`;
+  });
+
+  html+=`<div style="margin-top:8px">
+    <button class="btn btn-accent" onclick="startQuiz()">🎮 Hacer el Quiz ahora</button>
+    <button class="btn btn-outline" onclick="selectMovement('${m.id}')">← Volver</button>
+  </div>`;
+
+  app.innerHTML=html;
+  window.scrollTo(0,0);
+}
+
+// ============================================
+// QUIZ MODE
+// ============================================
+function startQuiz(){
+  sfxStart();
+  const m=state.movement;
+  // Shuffle questions
+  state.questions=[...m.questions].sort(()=>Math.random()-.5);
+  state.qIndex=0;
+  state.score=0;
+  state.correct=0;
+  state.wrong=0;
+  state.streak=0;
+  state.bestStreak=0;
+  state.screen='quiz';
+  state.answered=false;
+  startTimer();
+  render();
+}
+
+function startTimer(){
+  clearInterval(state.timer);
+  state.timeLeft=15;
+  state.timer=setInterval(()=>{
+    state.timeLeft-=0.1;
+    const bar=document.querySelector('.timer-bar .fill');
+    if(bar)bar.style.width=(state.timeLeft/15*100)+'%';
+    if(state.timeLeft<=0){
+      clearInterval(state.timer);
+      if(!state.answered)timeUp();
+    }
+  },100);
+}
+
+function timeUp(){
+  state.answered=true;
+  state.wrong++;
+  state.streak=0;
+  sfxWrong();
+  const q=state.questions[state.qIndex];
+  document.querySelectorAll('.option').forEach((el,i)=>{
+    el.classList.add('disabled');
+    if(i===q.ans)el.classList.add('correct');
+  });
+  setTimeout(nextQuestion,1800);
+}
+
+function renderQuiz(){
+  const q=state.questions[state.qIndex];
+  const total=state.questions.length;
+  const letters=['A','B','C','D'];
+  const optClasses=['opt-a','opt-b','opt-c','opt-d'];
+
+  app.innerHTML=`
+    <div class="header">
+      <button class="back" onclick="clearInterval(state.timer);selectMovement(state.movement.id)">✕</button>
+      <span class="title">${state.movement.emoji} Quiz</span>
+      <span class="score-badge">⚡${state.score}</span>
+    </div>
+    <div class="timer-bar"><div class="fill" style="width:${state.timeLeft/15*100}%"></div></div>
+    <div class="quiz-top">
+      <div class="q-num">Pregunta ${state.qIndex+1} de ${total} ${state.streak>=2?`<span style="color:var(--accent)">🔥x${state.streak}</span>`:''}</div>
+      <div class="q-text">${q.q}</div>
+    </div>
+    <div class="options">
+      ${q.opts.map((o,i)=>`
+        <div class="option ${optClasses[i]}" onclick="answer(${i})">
+          <span class="letter">${letters[i]}</span>${o}
+        </div>`).join('')}
+    </div>`;
+}
+
+function answer(idx){
+  if(state.answered)return;
+  state.answered=true;
+  clearInterval(state.timer);
+  const q=state.questions[state.qIndex];
+  const isCorrect=idx===q.ans;
+
+  document.querySelectorAll('.option').forEach((el,i)=>{
+    el.classList.add('disabled');
+    if(i===q.ans)el.classList.add('correct');
+    if(i===idx&&!isCorrect)el.classList.add('wrong');
+  });
+
+  if(isCorrect){
+    sfxCorrect();
+    state.correct++;
+    state.streak++;
+    if(state.streak>state.bestStreak)state.bestStreak=state.streak;
+    const bonus=Math.round(state.timeLeft)*2;
+    const streakBonus=state.streak>=3?50:state.streak>=2?20:0;
+    state.score+=100+bonus+streakBonus;
+  }else{
+    sfxWrong();
+    state.wrong++;
+    state.streak=0;
+  }
+
+  setTimeout(nextQuestion,1500);
+}
+
+function nextQuestion(){
+  state.qIndex++;
+  if(state.qIndex>=state.questions.length){
+    finishQuiz();
+  }else{
+    state.answered=false;
+    startTimer();
+    render();
+  }
+}
+
+function finishQuiz(){
+  clearInterval(state.timer);
+  state.totalScore+=state.score;
+  localStorage.setItem('lq_total',state.totalScore);
+  if(state.correct>=state.questions.length/2){
+    state.completed[state.movement.id]=true;
+    localStorage.setItem('lq_done',JSON.stringify(state.completed));
+  }
+  state.screen='results';
+  render();
+}
+
+// ============================================
+// RESULTS
+// ============================================
+function renderResults(){
+  const total=state.questions.length;
+  const pct=Math.round(state.correct/total*100);
+  const stars=pct>=90?'⭐⭐⭐':pct>=70?'⭐⭐':pct>=50?'⭐':'💪';
+  const msg=pct>=90?'Increible! Dominas este tema!':pct>=70?'Muy bien! Casi perfecto!':pct>=50?'Bien! Pero puedes mejorar':'Sigue estudiando, tu puedes!';
+
+  sfxStart();
+  app.innerHTML=`
+    <div class="results">
+      <div style="font-size:3em;margin-bottom:8px">${state.movement.emoji}</div>
+      <div class="big-score">${pct}%</div>
+      <div class="stars">${stars}</div>
+      <div class="label">${msg}</div>
+      <div class="stat-row">
+        <div class="stat"><div class="num" style="color:var(--green)">${state.correct}</div><div class="lbl">Correctas</div></div>
+        <div class="stat"><div class="num" style="color:var(--red)">${state.wrong}</div><div class="lbl">Falladas</div></div>
+        <div class="stat"><div class="num" style="color:var(--accent)">${state.score}</div><div class="lbl">Puntos</div></div>
+        <div class="stat"><div class="num" style="color:var(--yellow)">🔥${state.bestStreak}</div><div class="lbl">Racha</div></div>
+      </div>
+      <div style="margin-top:20px">
+        <button class="btn btn-accent" onclick="startQuiz()">🔄 Repetir Quiz</button>
+        <button class="btn btn-primary" onclick="startStudy()">📖 Repasar tema</button>
+        <button class="btn btn-outline" onclick="goMenu()">← Elegir otro tema</button>
+      </div>
+      <div style="margin-top:16px;color:var(--muted);font-size:.85em">
+        🏆 Puntuacion acumulada: <strong style="color:var(--accent)">${state.totalScore}</strong>
+      </div>
+    </div>`;
+  window.scrollTo(0,0);
+}
+
+// ============================================
+// INIT
+// ============================================
+render();
+</script>
+</body>
+</html>
