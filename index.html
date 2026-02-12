@@ -101,6 +101,31 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 /* AUDIO PLAYER */
 .audio-toggle{position:fixed;top:12px;right:12px;z-index:100;background:var(--card);border:2px solid var(--muted);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2em}
 
+/* COMPARISON TABLE */
+.vs-box{background:var(--card);border-radius:var(--radius);margin-bottom:16px;overflow:hidden}
+.vs-header{display:flex;text-align:center;font-weight:900;font-size:.95em}
+.vs-header div{flex:1;padding:12px 8px}
+.vs-header .vs-a{background:linear-gradient(135deg,#58a6ff22,#58a6ff11);color:var(--primary)}
+.vs-header .vs-mid{flex:0;padding:12px 10px;background:var(--bg);color:var(--accent);font-size:.8em;display:flex;align-items:center}
+.vs-header .vs-b{background:linear-gradient(135deg,#bc8cff22,#bc8cff11);color:var(--purple)}
+.vs-row{display:flex;border-top:1px solid #ffffff0a}
+.vs-row div{flex:1;padding:10px 12px;font-size:.82em;color:var(--muted);line-height:1.5}
+.vs-row .vs-mid{flex:0;width:40px;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--yellow);font-size:.75em}
+
+/* SCHEMA BOX */
+.schema-box{background:var(--card);border-radius:var(--radius);padding:20px;margin-bottom:16px;border:2px solid var(--primary);position:relative}
+.schema-box .schema-title{color:var(--primary);font-weight:900;font-size:1em;margin-bottom:12px;text-align:center}
+.schema-arrows{display:flex;flex-direction:column;gap:8px}
+.schema-item{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg);border-radius:10px}
+.schema-item .s-icon{font-size:1.3em;flex-shrink:0}
+.schema-item .s-arrow{color:var(--accent);font-weight:900;flex-shrink:0}
+.schema-item .s-text{font-size:.85em;color:var(--muted);line-height:1.4}
+.schema-item .s-label{font-weight:700;color:var(--text);font-size:.85em}
+
+/* GENRE PILLS */
+.genre-pills{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.genre-pill{padding:4px 12px;border-radius:20px;font-size:.75em;font-weight:700;border:1px solid}
+
 /* HERO BANNER */
 .hero-banner{width:100%;height:180px;object-fit:cover;border-radius:var(--radius);margin-bottom:16px;box-shadow:0 4px 20px rgba(0,0,0,.4)}
 .menu-card-img{width:100%;height:70px;object-fit:cover;border-radius:10px;margin-bottom:8px;opacity:.85}
@@ -150,7 +175,27 @@ const MOVEMENTS = [
         {year:"s.XIV",event:"Libro de Buen Amor (Arcipreste de Hita) y El Conde Lucanor (Don Juan Manuel)"},
         {year:"1476",event:"Coplas a la muerte de su padre, de Jorge Manrique"},
         {year:"1499",event:"La Celestina, de Fernando de Rojas: puente hacia el Renacimiento"}
-      ]
+      ],
+      comparison:{
+        titleA:"Mester de Juglaria",titleB:"Mester de Clerecia",
+        rows:[
+          {a:"Autores anonimos (juglares)",b:"Autores cultos con nombre (clerigos)"},
+          {a:"Transmision ORAL",b:"Transmision ESCRITA"},
+          {a:"Versos irregulares",b:"Versos regulares (cuaderna via)"},
+          {a:"Temas heroicos y epicos",b:"Temas religiosos y didacticos"},
+          {a:"Ej: Cantar de Mio Cid",b:"Ej: Milagros de Nuestra Senora"}
+        ]
+      },
+      schema:{
+        title:"Generos de la Edad Media",
+        items:[
+          {icon:"⚔️",label:"Epica",text:"Cantares de gesta (Mio Cid)"},
+          {icon:"🙏",label:"Religiosa",text:"Milagros, vidas de santos (Berceo)"},
+          {icon:"📖",label:"Didactica",text:"Cuentos con moraleja (Conde Lucanor)"},
+          {icon:"💃",label:"Lirica popular",text:"Jarchas, cantigas, villancicos"},
+          {icon:"🎭",label:"Teatro",text:"Auto de los Reyes Magos (s.XII)"}
+        ]
+      }
     },
     authors:[
       {name:"Anonimo",work:"Cantar de Mio Cid (s.XII)",note:"Primer gran poema epico castellano. Narra las hazanas de Rodrigo Diaz de Vivar, el Cid Campeador, que tras ser desterrado por el rey Alfonso VI, reconquista tierras y recupera su honor. Es un heroe mesurado, leal y humano."},
@@ -192,7 +237,27 @@ const MOVEMENTS = [
         {year:"1554",event:"Lazarillo de Tormes: nace la novela picaresca (anonima)"},
         {year:"1577",event:"San Juan de la Cruz escribe Cantico espiritual en prision"},
         {year:"1583",event:"Santa Teresa publica Las Moradas, cumbre de la prosa mistica"}
-      ]
+      ],
+      comparison:{
+        titleA:"Edad Media",titleB:"Renacimiento",
+        rows:[
+          {a:"TEOCENTRISMO (Dios es el centro)",b:"ANTROPOCENTRISMO (el humano es el centro)"},
+          {a:"Tradicion oral, juglares",b:"Textos escritos, imprenta"},
+          {a:"Temas religiosos y heroicos",b:"Amor, naturaleza, mitologia"},
+          {a:"Verso irregular",b:"Verso regular (soneto, lira)"},
+          {a:"Anonimato frecuente",b:"El autor firma y busca fama"}
+        ]
+      },
+      schema:{
+        title:"Topicos literarios del Renacimiento",
+        items:[
+          {icon:"⏳",label:"Carpe diem",text:"Aprovecha el momento, la juventud pasa rapido"},
+          {icon:"🌿",label:"Locus amoenus",text:"Lugar natural idealizado y perfecto"},
+          {icon:"🏡",label:"Beatus ille",text:"Feliz el que vive retirado en el campo"},
+          {icon:"💀",label:"Tempus fugit",text:"El tiempo huye, todo es efimero"},
+          {icon:"❓",label:"Ubi sunt?",text:"Donde estan los que ya murieron?"}
+        ]
+      }
     },
     authors:[
       {name:"Garcilaso de la Vega",work:"Eglogas, Sonetos",note:"Poeta-soldado que introdujo el soneto italiano (14 versos endecasilabos) en Espana. Su poesia habla de amor idealizado y naturaleza. Murio joven en batalla (1536). Revoluciono la lirica espanola."},
@@ -234,7 +299,27 @@ const MOVEMENTS = [
         {year:"1626",event:"El Buscon de Quevedo"},
         {year:"1635",event:"La vida es sueno de Calderon de la Barca"},
         {year:"1618",event:"Fuenteovejuna de Lope de Vega"}
-      ]
+      ],
+      comparison:{
+        titleA:"Conceptismo (Quevedo)",titleB:"Culteranismo (Gongora)",
+        rows:[
+          {a:"Juega con las IDEAS",b:"Juega con la FORMA"},
+          {a:"Dobles sentidos, paradojas",b:"Metaforas complejas, hiperbaton"},
+          {a:"Vocabulario sencillo pero ingenioso",b:"Vocabulario culto, latinismos"},
+          {a:"Brevedad, condensacion",b:"Ornamentacion, extension"},
+          {a:"Busca la AGUDEZA mental",b:"Busca la BELLEZA sensorial"}
+        ]
+      },
+      schema:{
+        title:"Generos del Siglo de Oro",
+        items:[
+          {icon:"📖",label:"Novela moderna",text:"Cervantes: Don Quijote"},
+          {icon:"🎭",label:"Teatro (Comedia nueva)",text:"Lope, Calderon, Tirso"},
+          {icon:"✍️",label:"Poesia culterana",text:"Gongora: belleza formal"},
+          {icon:"🧠",label:"Poesia conceptista",text:"Quevedo: ingenio e ideas"},
+          {icon:"😈",label:"Novela picaresca",text:"El Buscon, Guzman de Alfarache"}
+        ]
+      }
     },
     authors:[
       {name:"Miguel de Cervantes",work:"Don Quijote de la Mancha (1605/1615)",note:"Considerada la primera novela moderna y una de las mejores obras de la literatura universal. Don Quijote, un hidalgo que enloquece leyendo novelas de caballerias, y su escudero Sancho Panza recorren Espana viviendo aventuras. Mezcla humor, critica social y reflexion profunda sobre la realidad y la ficcion."},
@@ -276,7 +361,27 @@ const MOVEMENTS = [
         {year:"1844",event:"Don Juan Tenorio de Zorrilla: el mito de Don Juan"},
         {year:"1871",event:"Rimas y Leyendas de Becquer (publicacion postuma): Romanticismo tardio e intimista"},
         {year:"1884",event:"En las orillas del Sar de Rosalia de Castro"}
-      ]
+      ],
+      comparison:{
+        titleA:"Ilustracion (s.XVIII)",titleB:"Romanticismo (s.XIX)",
+        rows:[
+          {a:"RAZON por encima de todo",b:"SENTIMIENTO por encima de todo"},
+          {a:"Reglas clasicas, orden, equilibrio",b:"Libertad total, rompe reglas"},
+          {a:"Didactismo, utilidad social",b:"Expresion personal, el yo"},
+          {a:"Optimismo, progreso",b:"Pesimismo, rebeldia, muerte"},
+          {a:"Naturaleza ordenada",b:"Naturaleza salvaje y agreste"}
+        ]
+      },
+      schema:{
+        title:"Temas del Romanticismo",
+        items:[
+          {icon:"💔",label:"Amor imposible",text:"Pasion que acaba en tragedia y muerte"},
+          {icon:"⚡",label:"Libertad",text:"Politica, artistica y personal. Rebeldia"},
+          {icon:"🌙",label:"Misterio",text:"Lo sobrenatural, fantasmas, leyendas"},
+          {icon:"🏚️",label:"Evasion",text:"Huida a la Edad Media, Oriente, lo exotico"},
+          {icon:"💀",label:"Muerte",text:"Vista como liberacion del sufrimiento"}
+        ]
+      }
     },
     authors:[
       {name:"Gustavo Adolfo Becquer",work:"Rimas y Leyendas",note:"Romanticismo tardio e intimista. Sus Rimas (76 poemas breves) son la cumbre de la poesia romantica espanola: hablan de amor, desengano y soledad con un lenguaje sencillo y musical. Las Leyendas son relatos fantasticos ambientados en la Espana medieval."},
@@ -318,7 +423,27 @@ const MOVEMENTS = [
         {year:"1886",event:"Los pazos de Ulloa de Pardo Bazan: Naturalismo en Galicia"},
         {year:"1887",event:"Fortunata y Jacinta de Galdos: cumbre de la novela realista"},
         {year:"1898",event:"La barraca de Blasco Ibanez: Naturalismo valenciano"}
-      ]
+      ],
+      comparison:{
+        titleA:"Realismo",titleB:"Naturalismo",
+        rows:[
+          {a:"Describe la realidad objetivamente",b:"Describe la realidad + explica sus causas"},
+          {a:"El ser humano tiene libre albedrio",b:"El ser humano esta DETERMINADO (biologia + medio)"},
+          {a:"Temas: sociedad, clases, costumbres",b:"Temas: miseria, enfermedad, marginacion"},
+          {a:"Tono: critico pero equilibrado",b:"Tono: crudo, pesimista, casi cientifico"},
+          {a:"Ej: Galdos, Clarin",b:"Ej: Pardo Bazan, Blasco Ibanez"}
+        ]
+      },
+      schema:{
+        title:"Estructura de la novela realista",
+        items:[
+          {icon:"👁️",label:"Narrador omnisciente",text:"Lo ve todo, lo sabe todo, entra en las mentes"},
+          {icon:"🏙️",label:"Ambientacion real",text:"Ciudades y pueblos reales de Espana"},
+          {icon:"👥",label:"Personajes complejos",text:"Psicologia profunda, contradicciones"},
+          {icon:"⚖️",label:"Conflicto social",text:"Clases, dinero, religion, hipocresia"},
+          {icon:"📏",label:"Descripcion minuciosa",text:"Detallismo extremo en escenas y ambientes"}
+        ]
+      }
     },
     authors:[
       {name:"Benito Perez Galdos",work:"Fortunata y Jacinta, Episodios Nacionales",note:"El gran novelista del Realismo espanol. Fortunata y Jacinta retrata el Madrid del siglo XIX a traves de dos mujeres de clases opuestas. Los Episodios Nacionales son 46 novelas que recorren la historia de Espana. Prolificisimo: escribio mas de 100 obras."},
@@ -360,7 +485,17 @@ const MOVEMENTS = [
         {year:"1912",event:"Campos de Castilla de Machado: el paisaje como alma de Espana"},
         {year:"1914",event:"Niebla de Unamuno: la 'nivola'"},
         {year:"1920",event:"Luces de bohemia de Valle-Inclan: nace el esperpento"}
-      ]
+      ],
+      schema:{
+        title:"Grandes temas del 98",
+        items:[
+          {icon:"🇪🇸",label:"Espana",text:"Que es Espana? Por que esta en decadencia?"},
+          {icon:"🌾",label:"Castilla",text:"El paisaje castellano como alma del pais"},
+          {icon:"🤔",label:"Existencialismo",text:"Sentido de la vida, angustia, la muerte"},
+          {icon:"👤",label:"Intrahistoria",text:"La vida del pueblo llano, no los grandes hechos"},
+          {icon:"📝",label:"Renovacion literaria",text:"Nivola, esperpento, nuevos generos"}
+        ]
+      }
     },
     authors:[
       {name:"Miguel de Unamuno",work:"Niebla, San Manuel Bueno, martir",note:"Filosofo, ensayista, novelista y poeta. Rector de la Universidad de Salamanca. Obsesionado por la muerte, la fe y la identidad espanola. En Niebla, el protagonista Augusto Perez descubre que es un personaje de ficcion y se enfrenta a su autor. Invento la 'nivola'."},
@@ -402,7 +537,27 @@ const MOVEMENTS = [
         {year:"1933",event:"La voz a ti debida de Pedro Salinas"},
         {year:"1935",event:"La destruccion o el amor de Aleixandre"},
         {year:"1936",event:"Asesinato de Lorca. Guerra Civil. La generacion se dispersa"}
-      ]
+      ],
+      comparison:{
+        titleA:"Tradicion (Clasico)",titleB:"Vanguardia (Moderno)",
+        rows:[
+          {a:"Romancero, cancionero popular",b:"Surrealismo, creacionismo"},
+          {a:"Metrica clasica, rima",b:"Verso libre, verso sin rima"},
+          {a:"Imagenes logicas y bellas",b:"Imagenes irracionales, oniricas"},
+          {a:"Temas: amor, muerte, pueblo",b:"Temas: subconsciente, ciudad, angustia"},
+          {a:"Ej: Romancero gitano (Lorca)",b:"Ej: Poeta en Nueva York (Lorca)"}
+        ]
+      },
+      schema:{
+        title:"Destino de los poetas del 27",
+        items:[
+          {icon:"💀",label:"Lorca",text:"Asesinado en Granada (1936)"},
+          {icon:"✈️",label:"Alberti",text:"Exilio en Argentina, Italia. Vuelve en 1977"},
+          {icon:"✈️",label:"Cernuda",text:"Exilio en Mexico. Muere alli en 1963"},
+          {icon:"✈️",label:"Salinas",text:"Exilio en EEUU. Muere en Boston (1951)"},
+          {icon:"🏠",label:"Aleixandre",text:"Se queda en Espana. Nobel 1977"}
+        ]
+      }
     },
     authors:[
       {name:"Federico Garcia Lorca",work:"Romancero gitano, Poeta en Nueva York, La casa de Bernarda Alba",note:"El poeta espanol mas conocido en el mundo. Su poesia mezcla lo popular andaluz con imagenes surrealistas. El Romancero gitano canta al mundo gitano con fuerza y tragedia. En teatro, La casa de Bernarda Alba retrata la opresion de las mujeres. Fue asesinado al inicio de la Guerra Civil (1936)."},
@@ -445,7 +600,17 @@ const MOVEMENTS = [
         {year:"1956",event:"El Jarama de Sanchez Ferlosio: cumbre del objetivismo social"},
         {year:"1962",event:"Tiempo de silencio de Martin-Santos: revolucion formal en la novela"},
         {year:"1989",event:"Cela recibe el Premio Nobel de Literatura"}
-      ]
+      ],
+      schema:{
+        title:"Evolucion de la novela de posguerra",
+        items:[
+          {icon:"1️⃣",label:"Anos 40",text:"Existencialismo y tremendismo (Cela, Laforet)"},
+          {icon:"2️⃣",label:"Anos 50",text:"Novela social objetivista (Ferlosio, Delibes)"},
+          {icon:"3️⃣",label:"Anos 60",text:"Novela experimental (Martin-Santos)"},
+          {icon:"4️⃣",label:"Anos 70",text:"Transicion: libertad y nuevas voces"},
+          {icon:"5️⃣",label:"1975+",text:"Fin de la dictadura. Explosion creativa"}
+        ]
+      }
     },
     authors:[
       {name:"Camilo Jose Cela",work:"La familia de Pascual Duarte, La colmena",note:"Premio Nobel 1989. Inicio el tremendismo con Pascual Duarte: un campesino extremeno narra sus crimenes desde la carcel. La colmena retrata 3 dias en el Madrid de posguerra a traves de 300 personajes. Provocador, polemico y genial."},
@@ -688,6 +853,41 @@ function renderStudy(){
       </div>`;
     });
     html+=`</div>`;
+  }
+
+  // Esquema visual
+  if(m.extended&&m.extended.schema){
+    const s=m.extended.schema;
+    html+=`<div class="section-title">📊 Esquema</div>
+    <div class="schema-box">
+      <div class="schema-title">${s.title}</div>
+      <div class="schema-arrows">
+        ${s.items.map(it=>`<div class="schema-item">
+          <span class="s-icon">${it.icon}</span>
+          <span class="s-label">${it.label}</span>
+          <span class="s-arrow">→</span>
+          <span class="s-text">${it.text}</span>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  // Tabla comparativa
+  if(m.extended&&m.extended.comparison){
+    const c=m.extended.comparison;
+    html+=`<div class="section-title">⚖️ Comparacion</div>
+    <div class="vs-box">
+      <div class="vs-header">
+        <div class="vs-a">${c.titleA}</div>
+        <div class="vs-mid">VS</div>
+        <div class="vs-b">${c.titleB}</div>
+      </div>
+      ${c.rows.map(r=>`<div class="vs-row">
+        <div>${r.a}</div>
+        <div class="vs-mid">⚡</div>
+        <div>${r.b}</div>
+      </div>`).join('')}
+    </div>`;
   }
 
   html+=`<div class="section-title">${m.emoji} Autores y obras clave</div>`;
