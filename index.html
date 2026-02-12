@@ -101,6 +101,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 /* AUDIO PLAYER */
 .audio-toggle{position:fixed;top:12px;right:12px;z-index:100;background:var(--card);border:2px solid var(--muted);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2em}
 
+/* HERO BANNER */
+.hero-banner{width:100%;height:180px;object-fit:cover;border-radius:var(--radius);margin-bottom:16px;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.menu-card-img{width:100%;height:70px;object-fit:cover;border-radius:10px;margin-bottom:8px;opacity:.85}
+.study-hero{width:100%;height:200px;object-fit:cover;border-radius:var(--radius);margin-bottom:16px;box-shadow:0 6px 24px rgba(0,0,0,.5)}
+.study-img{width:100%;height:160px;object-fit:cover;border-radius:12px;margin:12px 0;opacity:.9}
+
 /* HIDDEN */
 .hidden{display:none!important}
 
@@ -124,6 +130,8 @@ const MOVEMENTS = [
     id:"medieval",emoji:"⚔️",name:"Edad Media",dates:"s.X - s.XV",
     color:"#d29922",
     img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Libro_de_buen_amor_f1r.jpg/220px-Libro_de_buen_amor_f1r.jpg",
+    heroImg:"https://images.unsplash.com/photo-1753709697924-3f30695a50d7?w=600&h=300&fit=crop",
+    heroImg2:"https://images.unsplash.com/photo-1551192335-89a2ee84bf34?w=500&h=280&fit=crop",
     desc:"Literatura marcada por la religion, la tradicion oral y los cantares de gesta.",
     chars:["Predominio de la tradicion oral y los juglares","Temas religiosos, heroicos y didacticos","Uso del verso como forma principal"],
     authors:[
@@ -146,6 +154,8 @@ const MOVEMENTS = [
     id:"renacimiento",emoji:"🎨",name:"Renacimiento",dates:"s.XV - s.XVI",
     color:"#3fb950",
     img:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Garcilaso_de_la_Vega_%28poeta%29.jpg/220px-Garcilaso_de_la_Vega_%28poeta%29.jpg",
+    heroImg:"https://images.unsplash.com/photo-1578301978162-7aae4d755744?w=600&h=300&fit=crop",
+    heroImg2:"https://images.unsplash.com/photo-1556005693-00fff02f134c?w=500&h=280&fit=crop",
     desc:"Vuelta a los clasicos grecolatinos. El ser humano como centro del universo (antropocentrismo).",
     chars:["Antropocentrismo frente al teocentrismo medieval","Imitacion de los clasicos grecolatinos","Temas: amor, naturaleza (locus amoenus), mitologia"],
     authors:[
@@ -168,6 +178,8 @@ const MOVEMENTS = [
     id:"barroco",emoji:"🎭",name:"Barroco",dates:"s.XVII",
     color:"#bc8cff",
     img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Quevedo_%28copia_de_Vel%C3%A1zquez%29.jpg/220px-Quevedo_%28copia_de_Vel%C3%A1zquez%29.jpg",
+    heroImg:"https://images.unsplash.com/photo-1557396283-12473517114a?w=600&h=300&fit=crop",
+    heroImg2:"https://images.unsplash.com/photo-1559246003-f70f1d16c169?w=500&h=280&fit=crop",
     desc:"Epoca de contrastes, desengano y virtuosismo formal. Siglo de Oro espanol.",
     chars:["Pesimismo, desengano y vision critica de la realidad","Dos corrientes: Conceptismo (ideas) y Culteranismo (forma)","Teatro: Lope de Vega crea la comedia nueva"],
     authors:[
@@ -190,6 +202,8 @@ const MOVEMENTS = [
     id:"romanticismo",emoji:"🌹",name:"Romanticismo",dates:"1800 - 1850",
     color:"#f85149",
     img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Gustavo_Adolfo_B%C3%A9cquer.jpg/220px-Gustavo_Adolfo_B%C3%A9cquer.jpg",
+    heroImg:"https://images.unsplash.com/photo-1541363393753-533174ed0a5b?w=600&h=300&fit=crop",
+    heroImg2:"https://images.unsplash.com/photo-1769411972412-234cdb5a181b?w=500&h=280&fit=crop",
     desc:"Exaltacion del yo, la libertad, los sentimientos y la rebeldia contra las normas.",
     chars:["Subjetivismo: el yo y los sentimientos por encima de la razon","Libertad creadora, rechazo de reglas clasicas","Temas: amor imposible, muerte, misterio, naturaleza salvaje"],
     authors:[
@@ -212,6 +226,8 @@ const MOVEMENTS = [
     id:"realismo",emoji:"🏭",name:"Realismo y Naturalismo",dates:"1850 - 1900",
     color:"#58a6ff",
     img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Benito_P%C3%A9rez_Gald%C3%B3s_%28765908928%29.jpg/220px-Benito_P%C3%A9rez_Gald%C3%B3s_%28765908928%29.jpg",
+    heroImg:"https://images.unsplash.com/photo-1505682634904-d7c8d95cdc50?w=600&h=300&fit=crop",
+    heroImg2:"https://images.unsplash.com/photo-1586539231943-3a4a1cc6f9d5?w=500&h=280&fit=crop",
     desc:"Descripcion objetiva de la realidad social. El Naturalismo anade el determinismo cientifico.",
     chars:["Descripcion minuciosa y objetiva de la realidad","Novela como genero dominante","Naturalismo: influencia del medio y la herencia biologica"],
     authors:[
@@ -234,6 +250,8 @@ const MOVEMENTS = [
     id:"gen98",emoji:"🇪🇸",name:"Generacion del 98",dates:"1898 - 1920",
     color:"#f0883e",
     img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Antonio_Machado_en_segovia.jpg/250px-Antonio_Machado_en_segovia.jpg",
+    heroImg:"https://images.unsplash.com/photo-1496071660095-563934d6b929?w=600&h=300&fit=crop",
+    heroImg2:"https://images.unsplash.com/photo-1675890389086-4a0e913a81e0?w=500&h=280&fit=crop",
     desc:"Crisis tras la perdida de las colonias en 1898. Reflexion sobre Espana y su identidad.",
     chars:["Preocupacion por el 'problema de Espana'","Estilo sobrio, personal y reflexivo","Paisaje castellano como simbolo de Espana"],
     authors:[
@@ -256,6 +274,8 @@ const MOVEMENTS = [
     id:"gen27",emoji:"🌙",name:"Generacion del 27",dates:"1927 - 1936",
     color:"#d29922",
     img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Federico_Garc%C3%ADa_Lorca.jpg/220px-Federico_Garc%C3%ADa_Lorca.jpg",
+    heroImg:"https://images.unsplash.com/photo-1548010437-eb52ad748fbe?w=600&h=300&fit=crop",
+    heroImg2:"https://images.unsplash.com/photo-1566342088293-38debd381c63?w=500&h=280&fit=crop",
     desc:"Grupo poetico que fusiona tradicion y vanguardia. Edad de plata de la literatura espanola.",
     chars:["Fusion de tradicion (romancero, Gongora) y vanguardia (surrealismo)","Gran riqueza de imagenes y metaforas","Compromiso social creciente antes de la Guerra Civil"],
     authors:[
@@ -278,6 +298,8 @@ const MOVEMENTS = [
     id:"posguerra",emoji:"📖",name:"Posguerra y s.XX",dates:"1939 - 1975",
     color:"#3fb950",
     img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Camilo_Jos%C3%A9_Cela_en_los_a%C3%B1os_40.jpg/250px-Camilo_Jos%C3%A9_Cela_en_los_a%C3%B1os_40.jpg",
+    heroImg:"https://images.unsplash.com/photo-1510442650500-93217e634e4c?w=600&h=300&fit=crop",
+    heroImg2:"https://images.unsplash.com/photo-1524668951403-d44b28200ce0?w=500&h=280&fit=crop",
     desc:"Literatura bajo la dictadura franquista: existencialismo, novela social y experimentacion.",
     chars:["Anos 40: existencialismo y tremendismo (Cela)","Anos 50: novela social, denuncia de la realidad","Anos 60-70: experimentacion formal (Tiempo de silencio)"],
     authors:[
@@ -402,6 +424,7 @@ function renderMenu(){
     const done = state.completed[m.id];
     return `<div class="menu-card" onclick="selectMovement('${m.id}')" style="border-color:${done?m.color:'transparent'}">
       ${done?`<div style="position:absolute;top:6px;right:8px;font-size:.7em">✅</div>`:''}
+      <img class="menu-card-img" src="${m.heroImg}" alt="${m.name}" onerror="this.style.display='none'">
       <span class="emoji">${m.emoji}</span>
       <div class="title">${m.name}</div>
       <div class="desc">${m.dates}</div>
@@ -436,6 +459,7 @@ function renderModeSelect(){
       <span class="title">${m.emoji} ${m.name}</span>
       <span class="score-badge">${m.dates}</span>
     </div>
+    <img class="hero-banner" src="${m.heroImg}" alt="${m.name}" onerror="this.style.display='none'">
     <div class="study-card" style="border-color:${m.color}">
       <p style="color:var(--text);font-size:1em">${m.desc}</p>
       <img class="author-img" src="${m.img}" alt="${m.name}" onerror="this.style.display='none'">
@@ -462,6 +486,7 @@ function renderStudy(){
       <span class="title">📖 ${m.name}</span>
       <span class="score-badge">${m.dates}</span>
     </div>
+    <img class="study-hero" src="${m.heroImg}" alt="${m.name}" onerror="this.style.display='none'">
     <div class="study-card" style="border-color:${m.color}">
       <span class="dates">${m.dates}</span>
       <h3>${m.name}</h3>
@@ -472,6 +497,7 @@ function renderStudy(){
       <h3>📌 Caracteristicas principales</h3>
       <ul>${m.chars.map(c=>`<li>${c}</li>`).join('')}</ul>
     </div>
+    <img class="study-img" src="${m.heroImg2}" alt="${m.name}" onerror="this.style.display='none'">
     <div class="section-title">${m.emoji} Autores y obras clave</div>`;
 
   m.authors.forEach(a=>{
