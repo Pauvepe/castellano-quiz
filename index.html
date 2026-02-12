@@ -134,12 +134,30 @@ const MOVEMENTS = [
     heroImg2:"https://images.unsplash.com/photo-1551192335-89a2ee84bf34?w=500&h=280&fit=crop",
     desc:"Literatura marcada por la religion, la tradicion oral y los cantares de gesta.",
     chars:["Predominio de la tradicion oral y los juglares","Temas religiosos, heroicos y didacticos","Uso del verso como forma principal"],
+    extended:{
+      context:"La Edad Media abarca casi cinco siglos de literatura en castellano. Espana vivia bajo la influencia de la Reconquista contra los musulmanes, el sistema feudal y el poder de la Iglesia. La literatura nace ligada a la oralidad: los juglares recitaban poemas de memoria en plazas y castillos. La sociedad era teocentrica (Dios como centro de todo) y la mayor parte de la poblacion era analfabeta, por lo que la transmision oral era fundamental.",
+      quote:{text:"Dios, que buen vassallo, si oviesse buen senor!",author:"Cantar de Mio Cid"},
+      concepts:[
+        {term:"Mester de Juglaria",def:"Oficio de los juglares. Poesia oral, popular, con versos irregulares. Ejemplo: Cantar de Mio Cid."},
+        {term:"Mester de Clerecia",def:"Oficio de los clerigos. Poesia culta, escrita, con versos regulares (cuaderna via: estrofas de 4 versos de 14 silabas). Ejemplo: Berceo."},
+        {term:"Cantar de gesta",def:"Poema epico que narra las hazanas de un heroe. Se recitaba con acompanamiento musical."},
+        {term:"Cuaderna via",def:"Estrofa de 4 versos alejandrinos (14 silabas) con rima consonante. Usada por el mester de clerecia."}
+      ],
+      timeline:[
+        {year:"s.X",event:"Glosas Emilianenses: primeras palabras escritas en castellano"},
+        {year:"s.XII",event:"Cantar de Mio Cid: primer gran poema epico"},
+        {year:"s.XIII",event:"Gonzalo de Berceo: primer poeta conocido por su nombre"},
+        {year:"s.XIV",event:"Libro de Buen Amor (Arcipreste de Hita) y El Conde Lucanor (Don Juan Manuel)"},
+        {year:"1476",event:"Coplas a la muerte de su padre, de Jorge Manrique"},
+        {year:"1499",event:"La Celestina, de Fernando de Rojas: puente hacia el Renacimiento"}
+      ]
+    },
     authors:[
-      {name:"Anonimo",work:"Cantar de Mio Cid (s.XII)",note:"Primer gran poema epico castellano"},
-      {name:"Gonzalo de Berceo",work:"Milagros de Nuestra Senora",note:"Primer poeta castellano de nombre conocido"},
-      {name:"Juan Ruiz, Arcipreste de Hita",work:"Libro de Buen Amor",note:"Mezcla lo religioso con lo profano"},
-      {name:"Fernando de Rojas",work:"La Celestina (1499)",note:"Obra de transicion al Renacimiento"},
-      {name:"Don Juan Manuel",work:"El Conde Lucanor",note:"Cuentos con ensenanza moral"}
+      {name:"Anonimo",work:"Cantar de Mio Cid (s.XII)",note:"Primer gran poema epico castellano. Narra las hazanas de Rodrigo Diaz de Vivar, el Cid Campeador, que tras ser desterrado por el rey Alfonso VI, reconquista tierras y recupera su honor. Es un heroe mesurado, leal y humano."},
+      {name:"Gonzalo de Berceo",work:"Milagros de Nuestra Senora",note:"Primer poeta castellano de nombre conocido. Escribio en cuaderna via. Sus Milagros son 25 relatos de intervenciones milagrosas de la Virgen Maria, con un estilo sencillo y cercano al pueblo."},
+      {name:"Juan Ruiz, Arcipreste de Hita",work:"Libro de Buen Amor",note:"Obra miscelanea que mezcla lo religioso con lo profano, lo serio con lo comico. Incluye fabulas, canciones y aventuras amorosas. Refleja la vitalidad de la sociedad medieval."},
+      {name:"Fernando de Rojas",work:"La Celestina (1499)",note:"Tragicomedia de Calisto y Melibea. La alcahueta Celestina interviene en los amores de los protagonistas. Final tragico. Obra de transicion al Renacimiento por su vision critica y realista de la sociedad."},
+      {name:"Don Juan Manuel",work:"El Conde Lucanor",note:"Coleccion de 51 cuentos con moraleja. El conde Lucanor plantea problemas a su consejero Patronio, quien responde con un cuento del que se extrae una ensenanza. Prosa didactica y elegante."}
     ],
     questions:[
       {q:"Cual es el primer gran poema epico en castellano?",opts:["Cantar de Mio Cid","La Celestina","El Quijote","Libro de Buen Amor"],ans:0},
@@ -158,12 +176,30 @@ const MOVEMENTS = [
     heroImg2:"https://images.unsplash.com/photo-1556005693-00fff02f134c?w=500&h=280&fit=crop",
     desc:"Vuelta a los clasicos grecolatinos. El ser humano como centro del universo (antropocentrismo).",
     chars:["Antropocentrismo frente al teocentrismo medieval","Imitacion de los clasicos grecolatinos","Temas: amor, naturaleza (locus amoenus), mitologia"],
+    extended:{
+      context:"El Renacimiento llega a Espana en el siglo XVI, influido por Italia. Se produce un cambio radical: del teocentrismo medieval se pasa al antropocentrismo (el ser humano como centro). Se redescubren los clasicos griegos y latinos, y surgen ideales como la armonia, la belleza y el equilibrio. La imprenta (1440) revoluciona la difusion de textos. Es la epoca de Carlos V y Felipe II, del descubrimiento de America y de la expansion del imperio espanol.",
+      quote:{text:"En tanto que de rosa y de azucena / se muestra la color en vuestro gesto...",author:"Garcilaso de la Vega, Soneto XXIII"},
+      concepts:[
+        {term:"Carpe diem",def:"'Aprovecha el dia'. Topico que invita a disfrutar la juventud y la belleza antes de que el tiempo las destruya."},
+        {term:"Locus amoenus",def:"'Lugar ameno'. Descripcion idealizada de la naturaleza: prados verdes, arroyos cristalinos, sombra de arboles. Espacio perfecto para el amor."},
+        {term:"Beatus ille",def:"'Dichoso aquel'. Elogio de la vida retirada en el campo, lejos del ruido de la ciudad y la ambicion."},
+        {term:"Petrarquismo",def:"Influencia del poeta italiano Petrarca. Amor idealizado, la amada como ser inalcanzable, sufrimiento amoroso del poeta."},
+        {term:"Mistica",def:"Experiencia de union del alma con Dios. San Juan de la Cruz y Santa Teresa son sus maximos representantes en Espana."}
+      ],
+      timeline:[
+        {year:"1492",event:"Descubrimiento de America y Gramatica de Nebrija (primera gramatica castellana)"},
+        {year:"1526",event:"Garcilaso conoce la poesia italiana: introduce el soneto y la lira en Espana"},
+        {year:"1554",event:"Lazarillo de Tormes: nace la novela picaresca (anonima)"},
+        {year:"1577",event:"San Juan de la Cruz escribe Cantico espiritual en prision"},
+        {year:"1583",event:"Santa Teresa publica Las Moradas, cumbre de la prosa mistica"}
+      ]
+    },
     authors:[
-      {name:"Garcilaso de la Vega",work:"Eglogas, Sonetos",note:"Introdujo el soneto italiano en Espana"},
-      {name:"Fray Luis de Leon",work:"Oda a la vida retirada",note:"Poeta mistico y academico"},
-      {name:"San Juan de la Cruz",work:"Cantico espiritual",note:"Maxima expresion de la mistica"},
-      {name:"Santa Teresa de Jesus",work:"Las Moradas",note:"Prosa mistica autobiografica"},
-      {name:"Lazarillo de Tormes",work:"(Anonimo, 1554)",note:"Primera novela picaresca"}
+      {name:"Garcilaso de la Vega",work:"Eglogas, Sonetos",note:"Poeta-soldado que introdujo el soneto italiano (14 versos endecasilabos) en Espana. Su poesia habla de amor idealizado y naturaleza. Murio joven en batalla (1536). Revoluciono la lirica espanola."},
+      {name:"Fray Luis de Leon",work:"Oda a la vida retirada",note:"Poeta, traductor y profesor en Salamanca. Estuvo preso por la Inquisicion 5 anos. Su poesia busca la armonia, la paz y la belleza. Famosa frase al volver a clase: 'Deciamos ayer...'"},
+      {name:"San Juan de la Cruz",work:"Cantico espiritual",note:"Maxima expresion de la poesia mistica. Describe la union del alma con Dios usando simbolos amorosos: la noche oscura, la llama de amor. Escribio parte de su obra encarcelado."},
+      {name:"Santa Teresa de Jesus",work:"Las Moradas",note:"Religiosa, escritora y reformadora. Su prosa mistica describe el camino del alma hacia Dios a traves de 7 moradas (habitaciones) del castillo interior. Estilo natural y espontaneo."},
+      {name:"Lazarillo de Tormes",work:"(Anonimo, 1554)",note:"Primera novela picaresca. Lazaro, un nino pobre, sirve a varios amos (un ciego, un clerigo avaro, un escudero arruinado...) y aprende a sobrevivir con astucia. Critica social mordaz disfrazada de humor."}
     ],
     questions:[
       {q:"Quien introdujo el soneto italiano en la poesia espanola?",opts:["Fray Luis de Leon","San Juan de la Cruz","Garcilaso de la Vega","Jorge Manrique"],ans:2},
@@ -182,12 +218,30 @@ const MOVEMENTS = [
     heroImg2:"https://images.unsplash.com/photo-1559246003-f70f1d16c169?w=500&h=280&fit=crop",
     desc:"Epoca de contrastes, desengano y virtuosismo formal. Siglo de Oro espanol.",
     chars:["Pesimismo, desengano y vision critica de la realidad","Dos corrientes: Conceptismo (ideas) y Culteranismo (forma)","Teatro: Lope de Vega crea la comedia nueva"],
+    extended:{
+      context:"El siglo XVII es el Siglo de Oro de la literatura espanola, pero tambien una epoca de crisis: el imperio espanol se desmorona, hay guerras, hambrunas y epidemias. Esta contradiccion entre grandeza cultural y decadencia politica genera una literatura llena de desengano, pesimismo y contrastes. El arte barroco es excesivo, recargado, dramatico. En literatura se busca sorprender al lector con ingenio verbal y complejidad formal.",
+      quote:{text:"Que es la vida? Un frenesi. / Que es la vida? Una ilusion, / una sombra, una ficcion, / y el mayor bien es pequeno; / que toda la vida es sueno, / y los suenos, suenos son.",author:"Calderon de la Barca, La vida es sueno"},
+      concepts:[
+        {term:"Conceptismo",def:"Corriente que juega con las IDEAS y los significados. Usa dobles sentidos, paradojas, antitesis y juegos de palabras. Maximo representante: Quevedo."},
+        {term:"Culteranismo",def:"Corriente que juega con la FORMA y el lenguaje. Usa metaforas complejas, hiperbaton (alterar el orden de las palabras), vocabulario culto y latinismos. Maximo representante: Gongora."},
+        {term:"Desengano",def:"Tema central del Barroco. La vida es apariencia, engano, sueno. Nada es lo que parece. Todo es efimero."},
+        {term:"Comedia nueva",def:"Reforma del teatro por Lope de Vega: mezcla comedia y tragedia, rompe las tres unidades clasicas, usa el verso, incluye personajes populares y temas de honra."}
+      ],
+      timeline:[
+        {year:"1605",event:"Don Quijote de la Mancha (1a parte) - Cervantes"},
+        {year:"1613",event:"Soledades de Gongora y Novelas ejemplares de Cervantes"},
+        {year:"1615",event:"Don Quijote (2a parte) - Cervantes"},
+        {year:"1626",event:"El Buscon de Quevedo"},
+        {year:"1635",event:"La vida es sueno de Calderon de la Barca"},
+        {year:"1618",event:"Fuenteovejuna de Lope de Vega"}
+      ]
+    },
     authors:[
-      {name:"Miguel de Cervantes",work:"Don Quijote de la Mancha (1605/1615)",note:"La primera novela moderna"},
-      {name:"Luis de Gongora",work:"Soledades, Fabula de Polifemo",note:"Maximo representante del culteranismo"},
-      {name:"Francisco de Quevedo",work:"El Buscon, Suenos",note:"Maximo representante del conceptismo"},
-      {name:"Lope de Vega",work:"Fuenteovejuna, El caballero de Olmedo",note:"Creo la comedia nueva espanola"},
-      {name:"Calderon de la Barca",work:"La vida es sueno",note:"Cumbre del teatro barroco"}
+      {name:"Miguel de Cervantes",work:"Don Quijote de la Mancha (1605/1615)",note:"Considerada la primera novela moderna y una de las mejores obras de la literatura universal. Don Quijote, un hidalgo que enloquece leyendo novelas de caballerias, y su escudero Sancho Panza recorren Espana viviendo aventuras. Mezcla humor, critica social y reflexion profunda sobre la realidad y la ficcion."},
+      {name:"Luis de Gongora",work:"Soledades, Fabula de Polifemo",note:"Maximo representante del culteranismo. Su poesia es de una belleza formal extraordinaria pero dificil de entender por su complejidad. Fue rival de Quevedo, con quien mantuvo una famosa enemistad literaria."},
+      {name:"Francisco de Quevedo",work:"El Buscon, Suenos",note:"Maximo representante del conceptismo. Maestro de la satira, el humor negro y los juegos de palabras. El Buscon es una novela picaresca feroz. Los Suenos son visiones satiricas del infierno y la sociedad."},
+      {name:"Lope de Vega",work:"Fuenteovejuna, El caballero de Olmedo",note:"'Monstruo de la naturaleza' (asi lo llamo Cervantes). Escribio mas de 1.500 obras de teatro. Creo la comedia nueva, rompiendo las reglas clasicas. Fuenteovejuna trata de un pueblo que se rebela contra un comendador tirano."},
+      {name:"Calderon de la Barca",work:"La vida es sueno",note:"Cumbre del teatro barroco. Su obra reflexiona sobre grandes temas filosoficos: libertad vs destino, realidad vs sueno, poder y moral. La vida es sueno plantea si lo que vivimos es real o solo una ilusion."}
     ],
     questions:[
       {q:"Quien escribio Don Quijote de la Mancha?",opts:["Lope de Vega","Quevedo","Cervantes","Calderon"],ans:2},
@@ -206,12 +260,30 @@ const MOVEMENTS = [
     heroImg2:"https://images.unsplash.com/photo-1769411972412-234cdb5a181b?w=500&h=280&fit=crop",
     desc:"Exaltacion del yo, la libertad, los sentimientos y la rebeldia contra las normas.",
     chars:["Subjetivismo: el yo y los sentimientos por encima de la razon","Libertad creadora, rechazo de reglas clasicas","Temas: amor imposible, muerte, misterio, naturaleza salvaje"],
+    extended:{
+      context:"El Romanticismo llega a Espana tarde (hacia 1830) desde Alemania, Inglaterra y Francia. Nace como reaccion contra la razon ilustrada del siglo XVIII. Los romanticos defienden la libertad absoluta: en politica, en arte y en la vida. El artista es un ser incomprendido, rebelde, apasionado. Se exaltan los sentimientos extremos, el amor tragico, la muerte y lo sobrenatural. La naturaleza refleja el estado de animo: tormentas, ruinas, noches oscuras.",
+      quote:{text:"Volveran las oscuras golondrinas / en tu balcon sus nidos a colgar, / y otra vez con el ala a sus cristales / jugando llamaran. / Pero aquellas... no volveran.",author:"Gustavo Adolfo Becquer, Rima LIII"},
+      concepts:[
+        {term:"Yo lirico",def:"El poeta romantico habla desde su yo mas intimo. La poesia es confesion personal, expresion directa de emociones."},
+        {term:"Libertad creadora",def:"Se rechazan todas las reglas clasicas: se mezclan generos, se rompen las unidades del teatro, el artista no acepta normas."},
+        {term:"Evasion",def:"El romantico huye de la realidad que le decepciona. Se evade al pasado medieval, a paises exoticos, al mundo de los suenos o a la muerte."},
+        {term:"Costumbrismo",def:"Corriente paralela que describe tipos y costumbres populares espanolas. Articulos de Larra con critica social mordaz."}
+      ],
+      timeline:[
+        {year:"1834",event:"Don Alvaro o la fuerza del sino, del Duque de Rivas: estreno que marca el inicio del Romanticismo en el teatro espanol"},
+        {year:"1835",event:"El estudiante de Salamanca de Espronceda"},
+        {year:"1837",event:"Cancion del pirata de Espronceda: poema emblema del Romanticismo"},
+        {year:"1844",event:"Don Juan Tenorio de Zorrilla: el mito de Don Juan"},
+        {year:"1871",event:"Rimas y Leyendas de Becquer (publicacion postuma): Romanticismo tardio e intimista"},
+        {year:"1884",event:"En las orillas del Sar de Rosalia de Castro"}
+      ]
+    },
     authors:[
-      {name:"Gustavo Adolfo Becquer",work:"Rimas y Leyendas",note:"Romanticismo tardio, poesia intimista"},
-      {name:"Jose de Espronceda",work:"El estudiante de Salamanca, Cancion del pirata",note:"Prototipo del poeta romantico rebelde"},
-      {name:"Duque de Rivas",work:"Don Alvaro o la fuerza del sino",note:"Drama romantico por excelencia"},
-      {name:"Jose Zorrilla",work:"Don Juan Tenorio",note:"El mito de Don Juan mas famoso"},
-      {name:"Rosalia de Castro",work:"En las orillas del Sar",note:"Romanticismo gallego y melancolia"}
+      {name:"Gustavo Adolfo Becquer",work:"Rimas y Leyendas",note:"Romanticismo tardio e intimista. Sus Rimas (76 poemas breves) son la cumbre de la poesia romantica espanola: hablan de amor, desengano y soledad con un lenguaje sencillo y musical. Las Leyendas son relatos fantasticos ambientados en la Espana medieval."},
+      {name:"Jose de Espronceda",work:"El estudiante de Salamanca, Cancion del pirata",note:"El prototipo del poeta romantico: vida rebelde, amorosa y apasionada. La Cancion del pirata ('Con diez canones por banda...') es el poema mas famoso del Romanticismo espanol. Murio joven, a los 34 anos."},
+      {name:"Duque de Rivas",work:"Don Alvaro o la fuerza del sino",note:"Drama romantico por excelencia. Don Alvaro, perseguido por un destino tragico, ve morir a todos los que ama y acaba suicidandose. Rompio con el teatro clasico y abrio paso al Romanticismo en Espana."},
+      {name:"Jose Zorrilla",work:"Don Juan Tenorio",note:"La version mas famosa del mito de Don Juan: seductor, rebelde, pero que se salva al final por el amor puro de Dona Ines. Se representa cada ano el 1 de noviembre (Dia de Todos los Santos) en Espana."},
+      {name:"Rosalia de Castro",work:"En las orillas del Sar",note:"Poetisa gallega que escribe en gallego y castellano. Su poesia es melancolica, nostalgica, llena de saudade (sentimiento gallego de anoranza). Temas: soledad, emigracion, dolor, naturaleza gallega."}
     ],
     questions:[
       {q:"Quien escribio 'Rimas y Leyendas'?",opts:["Espronceda","Zorrilla","Becquer","Rosalia de Castro"],ans:2},
@@ -230,12 +302,30 @@ const MOVEMENTS = [
     heroImg2:"https://images.unsplash.com/photo-1586539231943-3a4a1cc6f9d5?w=500&h=280&fit=crop",
     desc:"Descripcion objetiva de la realidad social. El Naturalismo anade el determinismo cientifico.",
     chars:["Descripcion minuciosa y objetiva de la realidad","Novela como genero dominante","Naturalismo: influencia del medio y la herencia biologica"],
+    extended:{
+      context:"En la segunda mitad del siglo XIX, la burguesia se consolida y la sociedad se industrializa. Los escritores abandonan el idealismo romantico y se proponen retratar la realidad tal como es, sin adornarla. La novela se convierte en el genero rey: largas obras que describen con detalle la sociedad espanola, sus clases, sus conflictos. El Naturalismo, influido por el frances Emile Zola, va un paso mas alla: aplica ideas cientificas (el medio ambiente y la herencia genetica determinan el comportamiento humano).",
+      quote:{text:"La Regenta, la heroina de Vetusta, no tenia amigos.",author:"Leopoldo Alas Clarin, La Regenta"},
+      concepts:[
+        {term:"Narrador omnisciente",def:"El narrador lo sabe todo: pensamientos, sentimientos, pasado y futuro de los personajes. Es la tecnica favorita del Realismo."},
+        {term:"Determinismo",def:"Idea central del Naturalismo: el ser humano esta determinado por su biologia (herencia genetica) y su entorno social. No es libre."},
+        {term:"Novela de tesis",def:"Novela que defiende una idea politica, social o religiosa. Galdos escribio varias, defendiendo el progreso liberal frente al conservadurismo."},
+        {term:"Costumbrismo realista",def:"Descripcion detallada de ambientes, costumbres y tipos sociales reales, sin idealizacion romantica."}
+      ],
+      timeline:[
+        {year:"1870",event:"La Fontana de Oro de Galdos: inicio del Realismo espanol"},
+        {year:"1873-1912",event:"Episodios Nacionales de Galdos: 46 novelas que narran la historia de Espana del s.XIX"},
+        {year:"1884-85",event:"La Regenta de Clarin: obra maestra del Realismo"},
+        {year:"1886",event:"Los pazos de Ulloa de Pardo Bazan: Naturalismo en Galicia"},
+        {year:"1887",event:"Fortunata y Jacinta de Galdos: cumbre de la novela realista"},
+        {year:"1898",event:"La barraca de Blasco Ibanez: Naturalismo valenciano"}
+      ]
+    },
     authors:[
-      {name:"Benito Perez Galdos",work:"Fortunata y Jacinta, Episodios Nacionales",note:"El gran novelista del Realismo espanol"},
-      {name:"Leopoldo Alas 'Clarin'",work:"La Regenta",note:"Obra cumbre del Realismo"},
-      {name:"Emilia Pardo Bazan",work:"Los pazos de Ulloa",note:"Introdujo el Naturalismo en Espana"},
-      {name:"Juan Valera",work:"Pepita Jimenez",note:"Realismo idealista andaluz"},
-      {name:"Vicente Blasco Ibanez",work:"La barraca, Canas y barro",note:"Naturalismo valenciano"}
+      {name:"Benito Perez Galdos",work:"Fortunata y Jacinta, Episodios Nacionales",note:"El gran novelista del Realismo espanol. Fortunata y Jacinta retrata el Madrid del siglo XIX a traves de dos mujeres de clases opuestas. Los Episodios Nacionales son 46 novelas que recorren la historia de Espana. Prolificisimo: escribio mas de 100 obras."},
+      {name:"Leopoldo Alas 'Clarin'",work:"La Regenta",note:"Considerada junto al Quijote como la mejor novela espanola. Ana Ozores, una mujer insatisfecha en la opresiva ciudad de Vetusta (Oviedo), se debate entre un sacerdote ambicioso y un seductor cinico. Critica devastadora de la hipocresia social y religiosa."},
+      {name:"Emilia Pardo Bazan",work:"Los pazos de Ulloa",note:"Introdujo el Naturalismo en Espana y lo defendio teoricamente. Los pazos de Ulloa retrata la decadencia de la aristocracia rural gallega. Fue una mujer adelantada a su tiempo: intelectual, feminista y poliglota."},
+      {name:"Juan Valera",work:"Pepita Jimenez",note:"Realismo andaluz mas idealista y estetico. Pepita Jimenez narra la lucha interior de un seminarista entre su vocacion religiosa y el amor por una joven viuda. Estilo elegante y refinado."},
+      {name:"Vicente Blasco Ibanez",work:"La barraca, Canas y barro",note:"Naturalismo valenciano. Sus novelas retratan la vida dura de los campesinos y pescadores de la huerta y la Albufera de Valencia. Estilo vigoroso y apasionado. Fue tambien politico y aventurero."}
     ],
     questions:[
       {q:"Quien escribio 'La Regenta'?",opts:["Galdos","Clarin","Pardo Bazan","Valera"],ans:1},
@@ -254,12 +344,30 @@ const MOVEMENTS = [
     heroImg2:"https://images.unsplash.com/photo-1675890389086-4a0e913a81e0?w=500&h=280&fit=crop",
     desc:"Crisis tras la perdida de las colonias en 1898. Reflexion sobre Espana y su identidad.",
     chars:["Preocupacion por el 'problema de Espana'","Estilo sobrio, personal y reflexivo","Paisaje castellano como simbolo de Espana"],
+    extended:{
+      context:"En 1898 Espana pierde Cuba, Puerto Rico y Filipinas, sus ultimas colonias. Es el 'Desastre del 98', que provoca una profunda crisis de identidad nacional. Un grupo de escritores jovenes reacciona preguntandose: Que es Espana? Que ha fallado? Buscan respuestas en el paisaje castellano (arido, austero, eterno), en la historia y en la filosofia. Su estilo es sobrio, personal y reflexivo, alejado del Realismo objetivo anterior.",
+      quote:{text:"Caminante, no hay camino, / se hace camino al andar.",author:"Antonio Machado, Campos de Castilla"},
+      concepts:[
+        {term:"Intrahistoria",def:"Concepto de Unamuno. Frente a la historia de grandes batallas y reyes, la intrahistoria es la vida cotidiana de la gente comun, la verdadera esencia de un pueblo."},
+        {term:"Paisaje castellano",def:"Castilla como simbolo de Espana. Los autores del 98 describen sus llanuras, pueblos abandonados y cielos infinitos como reflejo del alma espanola."},
+        {term:"Nivola",def:"Genero inventado por Unamuno. Novela experimental que rompe las reglas: los personajes se rebelan contra el autor, la trama es secundaria, lo importante son las ideas."},
+        {term:"Esperpento",def:"Genero creado por Valle-Inclan. Deforma la realidad grotescamente, como un espejo concavo, para mostrar la Espana tragica y ridicula a la vez."}
+      ],
+      timeline:[
+        {year:"1898",event:"Desastre del 98: Espana pierde Cuba, Puerto Rico y Filipinas"},
+        {year:"1902",event:"La voluntad de Azorin, Camino de perfeccion de Baroja, Amor y pedagogia de Unamuno"},
+        {year:"1907",event:"Soledades, galerias y otros poemas de Antonio Machado"},
+        {year:"1912",event:"Campos de Castilla de Machado: el paisaje como alma de Espana"},
+        {year:"1914",event:"Niebla de Unamuno: la 'nivola'"},
+        {year:"1920",event:"Luces de bohemia de Valle-Inclan: nace el esperpento"}
+      ]
+    },
     authors:[
-      {name:"Miguel de Unamuno",work:"Niebla, San Manuel Bueno, martir",note:"Filosofo existencialista, la 'nivola'"},
-      {name:"Antonio Machado",work:"Campos de Castilla, Soledades",note:"Poeta del paisaje y del tiempo"},
-      {name:"Pio Baroja",work:"El arbol de la ciencia, Zalacain el aventurero",note:"Novelista pesimista y directo"},
-      {name:"Azorin (Jose Martinez Ruiz)",work:"La voluntad, Castilla",note:"Descripcion minuciosa del paisaje"},
-      {name:"Valle-Inclan",work:"Luces de bohemia",note:"Creo el esperpento"}
+      {name:"Miguel de Unamuno",work:"Niebla, San Manuel Bueno, martir",note:"Filosofo, ensayista, novelista y poeta. Rector de la Universidad de Salamanca. Obsesionado por la muerte, la fe y la identidad espanola. En Niebla, el protagonista Augusto Perez descubre que es un personaje de ficcion y se enfrenta a su autor. Invento la 'nivola'."},
+      {name:"Antonio Machado",work:"Campos de Castilla, Soledades",note:"El poeta del 98 por excelencia. Su poesia es sencilla, profunda y melancolica. Campos de Castilla retrata el paisaje castellano como simbolo de una Espana dormida. Vivio en Soria, donde murio su joven esposa Leonor. Murio exiliado en Francia al final de la Guerra Civil."},
+      {name:"Pio Baroja",work:"El arbol de la ciencia, Zalacain el aventurero",note:"Novelista vasco de estilo directo, pesimista y antiretorico. El arbol de la ciencia es parcialmente autobiografica: un joven medico desencantado con la sociedad espanola. Escribio mas de 60 novelas organizadas en trilogias."},
+      {name:"Azorin (Jose Martinez Ruiz)",work:"La voluntad, Castilla",note:"Maestro de la descripcion minuciosa. Retrata Castilla con una prosa lenta, precisa y poetica: pueblos, paisajes, objetos cotidianos. Fue quien acuno el termino 'Generacion del 98'."},
+      {name:"Valle-Inclan",work:"Luces de bohemia",note:"El mas innovador del 98. Creo el esperpento: una vision deformada y grotesca de la realidad espanola. Luces de bohemia sigue al poeta ciego Max Estrella en su ultimo paseo nocturno por el Madrid bohemio. Frase celebre: 'Espana es una deformacion grotesca de la civilizacion europea'."}
     ],
     questions:[
       {q:"Que evento historico marca a la Generacion del 98?",opts:["Guerra Civil","Perdida de las colonias en 1898","Revolucion Industrial","Primera Guerra Mundial"],ans:1},
@@ -278,12 +386,30 @@ const MOVEMENTS = [
     heroImg2:"https://images.unsplash.com/photo-1566342088293-38debd381c63?w=500&h=280&fit=crop",
     desc:"Grupo poetico que fusiona tradicion y vanguardia. Edad de plata de la literatura espanola.",
     chars:["Fusion de tradicion (romancero, Gongora) y vanguardia (surrealismo)","Gran riqueza de imagenes y metaforas","Compromiso social creciente antes de la Guerra Civil"],
+    extended:{
+      context:"En 1927, un grupo de jovenes poetas se reune en Sevilla para homenajear a Gongora en el tercer centenario de su muerte. Son la Generacion del 27, la llamada 'Edad de Plata' de la literatura espanola. Su gran logro: fusionar la tradicion espanola (romancero, cancionero popular, Gongora) con las vanguardias europeas (surrealismo, futurismo, creacionismo). Son amigos entre si, comparten revistas y residencia (la famosa Residencia de Estudiantes de Madrid, donde convivieron Lorca, Dali y Bunuel). La Guerra Civil (1936) los dispersa tragicamente: Lorca es asesinado, la mayoria se exilia.",
+      quote:{text:"Verde que te quiero verde. / Verde viento. Verdes ramas. / El barco sobre la mar / y el caballo en la montana.",author:"Federico Garcia Lorca, Romance sonambulo"},
+      concepts:[
+        {term:"Neopopularismo",def:"Uso de formas populares (romances, canciones, coplas) con una elaboracion culta y moderna. Lorca y Alberti son los maestros."},
+        {term:"Surrealismo",def:"Movimiento de vanguardia que explora el subconsciente, los suenos y lo irracional. Imagenes oniricas y libres. Influyo en Lorca (Poeta en Nueva York), Aleixandre y Cernuda."},
+        {term:"Imagen visionaria",def:"Metafora que no se basa en parecido logico sino emocional. Ejemplo de Lorca: 'la aurora de Nueva York tiene cuatro columnas de cieno'. No se entiende con la razon, se siente."},
+        {term:"Residencia de Estudiantes",def:"Centro cultural de Madrid donde vivieron Lorca, Dali, Bunuel y otros. Foco de creatividad y amistad que marco a toda la generacion."}
+      ],
+      timeline:[
+        {year:"1924",event:"Marinero en tierra de Alberti (Premio Nacional de Literatura)"},
+        {year:"1927",event:"Homenaje a Gongora en Sevilla: acto fundacional de la generacion"},
+        {year:"1928",event:"Romancero gitano de Lorca: exito inmediato"},
+        {year:"1933",event:"La voz a ti debida de Pedro Salinas"},
+        {year:"1935",event:"La destruccion o el amor de Aleixandre"},
+        {year:"1936",event:"Asesinato de Lorca. Guerra Civil. La generacion se dispersa"}
+      ]
+    },
     authors:[
-      {name:"Federico Garcia Lorca",work:"Romancero gitano, Poeta en Nueva York, La casa de Bernarda Alba",note:"El poeta mas universal"},
-      {name:"Rafael Alberti",work:"Marinero en tierra, Sobre los angeles",note:"Poesia neopopular y vanguardista"},
-      {name:"Luis Cernuda",work:"La realidad y el deseo",note:"Conflicto entre deseo y realidad"},
-      {name:"Pedro Salinas",work:"La voz a ti debida",note:"Poeta del amor"},
-      {name:"Vicente Aleixandre",work:"La destruccion o el amor",note:"Premio Nobel 1977, surrealismo"}
+      {name:"Federico Garcia Lorca",work:"Romancero gitano, Poeta en Nueva York, La casa de Bernarda Alba",note:"El poeta espanol mas conocido en el mundo. Su poesia mezcla lo popular andaluz con imagenes surrealistas. El Romancero gitano canta al mundo gitano con fuerza y tragedia. En teatro, La casa de Bernarda Alba retrata la opresion de las mujeres. Fue asesinado al inicio de la Guerra Civil (1936)."},
+      {name:"Rafael Alberti",work:"Marinero en tierra, Sobre los angeles",note:"Gaditano, Premio Nacional a los 22 anos con Marinero en tierra, poesia neopopular llena de mar y nostalgia. Sobre los angeles es su obra mas surrealista y personal, escrita en crisis. Se exilio tras la Guerra Civil y volvio a Espana en 1977."},
+      {name:"Luis Cernuda",work:"La realidad y el deseo",note:"Toda su obra se agrupa bajo el titulo La realidad y el deseo: el conflicto permanente entre lo que deseamos y lo que la realidad nos ofrece. Poesia intima, dolorida y elegante. Vivio en el exilio (Mexico) hasta su muerte."},
+      {name:"Pedro Salinas",work:"La voz a ti debida",note:"El 'poeta del amor' del 27. La voz a ti debida es uno de los grandes libros de poesia amorosa del siglo XX: dialogo intimo con la amada, busqueda de la esencia del amor. Estilo intelectual y emotivo a la vez."},
+      {name:"Vicente Aleixandre",work:"La destruccion o el amor",note:"Premio Nobel de Literatura en 1977. Poesia surrealista que identifica amor y destruccion como fuerzas cosmicas. Fue el unico del grupo que se quedo en Espana tras la guerra, y su casa se convirtio en punto de encuentro de poetas jovenes."}
     ],
     questions:[
       {q:"Que homenaje a un poeta clasico reune a la Generacion del 27?",opts:["Cervantes","Quevedo","Gongora","Garcilaso"],ans:2},
@@ -302,12 +428,31 @@ const MOVEMENTS = [
     heroImg2:"https://images.unsplash.com/photo-1524668951403-d44b28200ce0?w=500&h=280&fit=crop",
     desc:"Literatura bajo la dictadura franquista: existencialismo, novela social y experimentacion.",
     chars:["Anos 40: existencialismo y tremendismo (Cela)","Anos 50: novela social, denuncia de la realidad","Anos 60-70: experimentacion formal (Tiempo de silencio)"],
+    extended:{
+      context:"Tras la Guerra Civil (1936-39), Espana queda bajo la dictadura de Franco. Censura, miseria, aislamiento internacional. La literatura evoluciona en tres etapas: en los anos 40, el existencialismo refleja el vacio y la angustia (Cela, Laforet); en los 50, la novela social denuncia las injusticias con tecnica objetivista, como una camara que graba sin opinar (Ferlosio); en los 60-70, llega la experimentacion formal influida por la novela europea y latinoamericana (Martin-Santos). La censura obliga a los escritores a ser sutiles en su critica.",
+      quote:{text:"Yo, senor, no soy malo, aunque no me faltarian motivos para serlo.",author:"Camilo Jose Cela, La familia de Pascual Duarte"},
+      concepts:[
+        {term:"Tremendismo",def:"Estilo iniciado por Cela con Pascual Duarte (1942). Muestra la realidad mas cruda y violenta sin filtros: crimenes, miseria, brutalidad. Reflejo de la Espana de posguerra."},
+        {term:"Novela social",def:"Anos 50. La novela como denuncia de la injusticia social. Tecnica objetivista: el narrador no opina, solo muestra. Personaje colectivo (un grupo, no un individuo)."},
+        {term:"Novela experimental",def:"Anos 60-70. Se rompe con la narracion lineal: monologos interiores, multiples puntos de vista, juegos con el lenguaje y la estructura. Influencia de Joyce, Faulkner y el boom latinoamericano."},
+        {term:"Censura franquista",def:"El regimen de Franco censuraba libros, teatro y prensa. Los escritores usaban metaforas, simbolos y ambiguedades para burlar la censura y colar su critica."}
+      ],
+      timeline:[
+        {year:"1942",event:"La familia de Pascual Duarte de Cela: nace el tremendismo"},
+        {year:"1944",event:"Hijos de la ira de Damaso Alonso: poesia existencial desgarradora"},
+        {year:"1945",event:"Nada de Carmen Laforet: una joven en la Barcelona gris de posguerra"},
+        {year:"1951",event:"La colmena de Cela: retrato coral del Madrid de posguerra"},
+        {year:"1956",event:"El Jarama de Sanchez Ferlosio: cumbre del objetivismo social"},
+        {year:"1962",event:"Tiempo de silencio de Martin-Santos: revolucion formal en la novela"},
+        {year:"1989",event:"Cela recibe el Premio Nobel de Literatura"}
+      ]
+    },
     authors:[
-      {name:"Camilo Jose Cela",work:"La familia de Pascual Duarte, La colmena",note:"Premio Nobel 1989, tremendismo"},
-      {name:"Carmen Laforet",work:"Nada (1945)",note:"Existencialismo femenino, Premio Nadal"},
-      {name:"Miguel Delibes",work:"Los santos inocentes, Cinco horas con Mario",note:"Mundo rural y critica social"},
-      {name:"Rafael Sanchez Ferlosio",work:"El Jarama",note:"Novela social objetivista"},
-      {name:"Luis Martin-Santos",work:"Tiempo de silencio",note:"Inicio de la novela experimental"}
+      {name:"Camilo Jose Cela",work:"La familia de Pascual Duarte, La colmena",note:"Premio Nobel 1989. Inicio el tremendismo con Pascual Duarte: un campesino extremeno narra sus crimenes desde la carcel. La colmena retrata 3 dias en el Madrid de posguerra a traves de 300 personajes. Provocador, polemico y genial."},
+      {name:"Carmen Laforet",work:"Nada (1945)",note:"Gano el primer Premio Nadal con solo 23 anos. Nada narra la llegada de Andrea, una joven, a la Barcelona de posguerra: una familia destrozada, un piso sordido, hambre y frustracion. Novela existencialista que capto el vacio de toda una generacion."},
+      {name:"Miguel Delibes",work:"Los santos inocentes, Cinco horas con Mario",note:"El gran cronista del mundo rural castellano. Los santos inocentes denuncia la explotacion de los campesinos por los senoritos. Cinco horas con Mario es un monologo genial: una viuda habla al cadaver de su marido toda la noche. Estilo humano, tierno y critico."},
+      {name:"Rafael Sanchez Ferlosio",work:"El Jarama",note:"Cumbre de la novela social objetivista. Narra un domingo de excursion de unos jovenes al rio Jarama. No pasa casi nada... hasta que pasa. Tecnica de camara: solo dialogos y descripciones externas, sin acceso a pensamientos."},
+      {name:"Luis Martin-Santos",work:"Tiempo de silencio",note:"Revoluciono la novela espanola con esta obra experimental. Un joven medico investigador se ve envuelto en un aborto clandestino en los suburbios de Madrid. Lenguaje barroco, ironico, con monologos interiores y multiples registros. Murio joven en accidente de coche."}
     ],
     questions:[
       {q:"Quien escribio 'La colmena'?",opts:["Delibes","Cela","Laforet","Martin-Santos"],ans:1},
@@ -492,13 +637,60 @@ function renderStudy(){
       <h3>${m.name}</h3>
       <p>${m.desc}</p>
       <img class="author-img" src="${m.img}" alt="${m.name}" onerror="this.style.display='none'">
-    </div>
-    <div class="study-card" style="border-color:var(--yellow)">
+    </div>`;
+
+  // Contexto historico
+  if(m.extended){
+    html+=`<div class="study-card" style="border-color:var(--accent)">
+      <h3>🏛️ Contexto historico</h3>
+      <p>${m.extended.context}</p>
+    </div>`;
+  }
+
+  html+=`<div class="study-card" style="border-color:var(--yellow)">
       <h3>📌 Caracteristicas principales</h3>
       <ul>${m.chars.map(c=>`<li>${c}</li>`).join('')}</ul>
-    </div>
-    <img class="study-img" src="${m.heroImg2}" alt="${m.name}" onerror="this.style.display='none'">
-    <div class="section-title">${m.emoji} Autores y obras clave</div>`;
+    </div>`;
+
+  // Cita literaria
+  if(m.extended&&m.extended.quote){
+    html+=`<div class="study-card" style="border-color:var(--purple);border-left-width:6px;background:linear-gradient(135deg,var(--card),#1a1a2e)">
+      <p style="color:var(--text);font-style:italic;font-size:1.05em;line-height:1.7">"${m.extended.quote.text}"</p>
+      <p style="margin-top:8px;text-align:right;color:var(--accent);font-weight:600;font-size:.9em">— ${m.extended.quote.author}</p>
+    </div>`;
+  }
+
+  html+=`<img class="study-img" src="${m.heroImg2}" alt="${m.name}" onerror="this.style.display='none'">`;
+
+  // Conceptos clave
+  if(m.extended&&m.extended.concepts){
+    html+=`<div class="section-title">🔑 Conceptos clave</div>`;
+    m.extended.concepts.forEach(c=>{
+      html+=`<div class="study-card" style="border-color:var(--green)">
+        <h3 style="color:var(--green)">${c.term}</h3>
+        <p>${c.def}</p>
+      </div>`;
+    });
+  }
+
+  // Linea temporal
+  if(m.extended&&m.extended.timeline){
+    html+=`<div class="section-title">📅 Linea temporal</div>
+    <div class="study-card" style="border-color:var(--primary);padding:16px 20px">`;
+    m.extended.timeline.forEach((t,i)=>{
+      const isLast=i===m.extended.timeline.length-1;
+      html+=`<div style="display:flex;gap:12px;padding-bottom:${isLast?'0':'16px'};border-left:${isLast?'none':'2px solid var(--primary)'};margin-left:6px;padding-left:16px;position:relative">
+        <div style="position:absolute;left:-7px;top:2px;width:12px;height:12px;background:var(--primary);border-radius:50%;border:2px solid var(--bg)"></div>
+        <div>
+          <div style="color:var(--accent);font-weight:700;font-size:.85em">${t.year}</div>
+          <div style="color:var(--muted);font-size:.9em;margin-top:2px">${t.event}</div>
+        </div>
+      </div>`;
+    });
+    html+=`</div>`;
+  }
+
+  html+=`<div class="section-title">${m.emoji} Autores y obras clave</div>`;
 
   m.authors.forEach(a=>{
     html+=`<div class="study-card" style="border-color:var(--purple)">
