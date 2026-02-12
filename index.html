@@ -13,7 +13,7 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-.container{max-width:500px;margin:0 auto;padding:12px}
+.container{max-width:500px;margin:0 auto;padding:12px;animation:fadeInUp .3s ease}
 
 /* SPLASH */
 .splash{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:20px}
@@ -725,6 +725,9 @@ function stopBgMusic(){clearInterval(bgInterval);bgInterval=null}
 // RENDER
 // ============================================
 function render(){
+  app.style.animation='none';
+  app.offsetHeight;
+  app.style.animation='fadeInUp .3s ease';
   switch(state.screen){
     case 'splash': renderSplash(); break;
     case 'menu': renderMenu(); break;
@@ -923,9 +926,10 @@ function renderStudy(){
     </div>`;
   });
 
-  html+=`<div style="margin-top:8px">
+  html+=`<div class="anim" style="margin-top:8px">
     <button class="btn btn-accent" onclick="startQuiz()">🎮 Hacer el Quiz ahora</button>
     <button class="btn btn-outline" onclick="selectMovement('${m.id}')">← Volver</button>
+    <p style="text-align:center;color:var(--muted);font-size:.7em;margin-top:16px;opacity:.5">Imagenes de Unsplash y Wikimedia Commons</p>
   </div>`;
 
   app.innerHTML=html;
